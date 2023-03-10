@@ -9,12 +9,13 @@ const Footer = () => {
     <div className="footer">
       <div className="top">
         <div className="item">
-          <h1>Categories</h1>
-          <span>Men</span>
-          <span>Women</span>
-          <span>Children</span>
-          <span>Accessories</span>
-          <span>New Arrivals</span>
+          <h1 className='links'>Categories</h1>
+          <a href="/products/4"><span>Cosmetics</span></a>
+          <a href="/products/7"><span>Food</span></a>
+          <a href="/products/6"><span>Accessories</span></a>
+          <a href="/products/8"><span>Cleaners</span></a>
+          <a href="/products/5"><span>Home decoration</span></a>
+          <a href="/products/9"><span>Other</span></a>
         </div>
         <div className="item">
           <h1>Links</h1>

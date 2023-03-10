@@ -14,7 +14,7 @@ const FeaturedProducts = ({ type }) => {
         <h1>{type} products</h1>
         <p>
           Those products are experiencing an increase in popularity and demand
-          within our consumers. These products often gain attention and they are
+          within our consumers. <br /> These products often gain attention and they are
           so trendy.
         </p>
       </div>

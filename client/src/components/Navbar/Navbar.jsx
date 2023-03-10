@@ -19,10 +19,7 @@ const Navbar = () => {
             <img src="/img/en.png" alt="" />
             <KeyboardArrowDownIcon />
           </div>
-          <div className="item">
-            <span>USD</span>
-            <KeyboardArrowDownIcon />
-          </div>
+          
           <div className="item">
             <Link className="link" to="/products/1">
               Men
