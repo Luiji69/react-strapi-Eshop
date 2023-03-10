@@ -18,16 +18,10 @@
       "maxLength": 25,
       "minLength": 3
     },
-    "desc": {
-      "type": "text",
-      "required": true,
-      "maxLength": 500,
-      "minLength": 60
-    },
     "img": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",

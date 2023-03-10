@@ -15,7 +15,7 @@
     "title": {
       "type": "string",
       "required": true,
-      "maxLength": 25,
+      "maxLength": 100,
       "minLength": 3
     },
     "price": {
@@ -26,23 +26,28 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "img2": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
-    },
-    "isNew": {
-      "type": "boolean",
-      "default": false
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "desc": {
       "type": "text",
-      "required": true,
-      "maxLength": 500,
-      "minLength": 60
+      "required": false,
+      "maxLength": 1000
     },
     "categories": {
       "type": "relation",
@@ -58,7 +63,15 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": ["normal", "featured", "trending"]
+      "enum": [
+        "normal",
+        "featured",
+        "trending"
+      ]
+    },
+    "isnew": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

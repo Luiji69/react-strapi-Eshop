@@ -1,6 +1,6 @@
-import React from "react";
-import "./Categories.scss";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './Categories.scss';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
   return (
@@ -8,37 +8,37 @@ const Categories = () => {
       <div className="col">
         <div className="row">
           <img
-            src="https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="https://images.pexels.com/photos/7290089/pexels-photo-7290089.jpeg?auto=compress&cs=tinysrgb&w=1600"
             alt=""
           />
           <button>
-            <Link className="link" to="/products/1">
-              Sale
+            <Link className="link" to="/products/4">
+              Cosmetics
             </Link>
           </button>
         </div>
         <div className="row">
           <img
-            src="https://images.pexels.com/photos/2036646/pexels-photo-2036646.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="https://images.pexels.com/photos/8448328/pexels-photo-8448328.jpeg?auto=compress&cs=tinysrgb&w=1600"
             alt=""
           />
           <button>
-            <Link to="/products/1" className="link">
-              Women
+            <Link to="/products/7" className="link">
+              food
             </Link>
           </button>
         </div>
       </div>
       <div className="col">
         <div className="row">
-          {" "}
+          {' '}
           <img
-            src="https://images.pexels.com/photos/1813947/pexels-photo-1813947.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="https://images.pexels.com/photos/1212048/pexels-photo-1212048.jpeg?auto=compress&cs=tinysrgb&w=1600"
             alt=""
           />
           <button>
-            <Link to="/products/1" className="link">
-              New Season
+            <Link to="/products/6" className="link">
+              accessories
             </Link>
           </button>
         </div>
@@ -48,26 +48,26 @@ const Categories = () => {
           <div className="col">
             <div className="row">
               <img
-                src="https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                src="https://images.pexels.com/photos/5217929/pexels-photo-5217929.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 alt=""
               />
               <button>
-                <Link to="/products/1" className="link">
-                  Men
+                <Link to="/products/8" className="link">
+                  cleaners
                 </Link>
               </button>
             </div>
           </div>
           <div className="col">
             <div className="row">
-              {" "}
+              {' '}
               <img
-                src="https://images.pexels.com/photos/2703202/pexels-photo-2703202.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                src="https://images.pexels.com/photos/6045103/pexels-photo-6045103.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 alt=""
               />
               <button>
-                <Link to="/products/1" className="link">
-                  Accessories
+                <Link to="/products/9" className="link">
+                  other
                 </Link>
               </button>
             </div>
@@ -75,12 +75,12 @@ const Categories = () => {
         </div>
         <div className="row">
           <img
-            src="https://images.pexels.com/photos/1159670/pexels-photo-1159670.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="https://images.pexels.com/photos/1099816/pexels-photo-1099816.jpeg?auto=compress&cs=tinysrgb&w=1600"
             alt=""
           />
           <button>
-            <Link to="/products/1" className="link">
-              Shoes
+            <Link to="/products/5" className="link">
+              Home decoration
             </Link>
           </button>
         </div>

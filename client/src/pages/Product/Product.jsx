@@ -3,7 +3,6 @@ import { useState } from 'react';
 import './Product.scss';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import BalanceIcon from '@mui/icons-material/Balance';
 
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -91,23 +90,12 @@ const Product = () => {
               <div className="item">
                 <FavoriteBorderIcon /> ADD TO WISH LIST
               </div>
-              <div className="item">
-                <BalanceIcon /> ADD TO COMPARE
-              </div>
             </div>
             <div className="info">
-              <span>Vendor: Polo</span>
-              <span>Product Type: T-Shirt</span>
-              <span>Tag: T-Shirt, Women, Top</span>
+              <span>sub-category: {data?.attributes?.sub_categories.data[0].attributes.title}</span>
+              <span>Product Type: {data?.attributes?.categories.data[0].attributes.title} </span>
             </div>
             <hr />
-            <div className="info">
-              <span>DESCRIPTION</span>
-              <hr />
-              <span>ADDITIONAL INFORMATION</span>
-              <hr />
-              <span>FAQ</span>
-            </div>
           </div>
         </>
       )}
