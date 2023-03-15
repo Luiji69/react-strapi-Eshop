@@ -1,0 +1,48 @@
+.header_space {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+
+  .header_space_brand {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  
+
+  .auth_buttons {
+    display: flex;
+    align-items: center;
+
+    .auth_button_login {
+      font-weight: bold;
+    }
+    .auth_button_signUp {
+      margin-right: 1rem;
+      background-color: #68944f;
+      border-color: #68944f;
+      color: #fff;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .auth_button_login {
+      color: #000;
+    }
+  }
+}

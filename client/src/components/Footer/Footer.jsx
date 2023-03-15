@@ -3,6 +3,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import EmailIcon from '@mui/icons-material/Email';
 import './Footer.scss';
+import logo from '../../assets/logo.png';
 
 const Footer = () => {
   return (
@@ -53,7 +54,7 @@ const Footer = () => {
       <div className="bottom">
         <div className="left">
           <div className="image-container">
-            <img src="/img/logo.png" alt="" />
+            <img src={logo} alt="" />
           </div>
           <span className="copyright">
             © Copyright 2023. CREATED BY Islem Baaziz. PREMIUM E-COMMERCE

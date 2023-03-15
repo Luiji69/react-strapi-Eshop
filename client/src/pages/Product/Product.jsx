@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
 import useFetch from '../../components/hooks/useFetch';
 
-
 const Product = () => {
   const id = useParams().id;
   const [selectedImg, setSelectedImg] = useState('img');
@@ -92,8 +91,14 @@ const Product = () => {
               </div>
             </div>
             <div className="info">
-              <span>sub-category: {data?.attributes?.sub_categories.data[0].attributes.title}</span>
-              <span>Product Type: {data?.attributes?.categories.data[0].attributes.title} </span>
+              <span>
+                sub-category:{' '}
+                {data?.attributes?.sub_categories.data[0].attributes.title}
+              </span>
+              <span>
+                Product Type:{' '}
+                {data?.attributes?.categories.data[0].attributes.title}{' '}
+              </span>
             </div>
             <hr />
           </div>
