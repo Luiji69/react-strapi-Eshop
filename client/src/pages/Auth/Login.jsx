@@ -21,6 +21,7 @@ const Login = () => {
     try {
       if (user.identifier && user.password) {
         const {data} = await axios.post(url, user);
+        console.log(data);
         if(data.jwt){
           toast.success('Logged in successfuly', {
             hideProgressBar: true, 

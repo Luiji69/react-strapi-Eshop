@@ -3,7 +3,6 @@ import { useState } from 'react';
 import './Product.scss';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import RelatedProducts from '../Product/RelatedProducts/RelatedProducts'
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';

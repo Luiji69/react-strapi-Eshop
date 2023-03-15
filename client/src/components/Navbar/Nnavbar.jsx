@@ -12,7 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import TGBTLOGO from '../../assets/TGBTLOGO.png';
 import { Link } from 'react-router-dom';
 
-const Nnavbar = () => {
+
+const Nnavbar = (user) => {
+
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [showNav, setShowNav] = React.useState(false);
 
