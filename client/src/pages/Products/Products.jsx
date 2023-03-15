@@ -1,10 +1,9 @@
-import React from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import useFetch from "../../components/hooks/useFetch";
-import List from "../../components/List/List";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import useFetch from '../../components/hooks/useFetch';
+import List from '../../components/List/List';
 
-import "./Products.scss";
+import './Products.scss';
 
 const Products = () => {
   const catId = parseInt(useParams().id);
@@ -13,7 +12,8 @@ const Products = () => {
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
   const { data, loading, error } = useFetch(
-    `/sub-categories?[filters][categories][id][$eq]=${catId}`
+    `/sub-categories?[filters][categories][id][$eq]=${catId}`,
+    [selectedSubCats, sort]
   );
 
   const handleChange = (e) => {
@@ -27,6 +27,17 @@ const Products = () => {
     );
   };
 
+  useEffect(() => {
+    setMaxPrice(1000);
+  }, [selectedSubCats, sort]);
+
+  // Add this useEffect to set the selectedSubCats to all subcategories on mount
+  useEffect(() => {
+    if (data) {
+      setSelectedSubCats(data.map((item) => item.id.toString()));
+    }
+  }, [data]);
+
   return (
     <div className="products">
       <div className="left">
@@ -38,6 +49,7 @@ const Products = () => {
                 type="checkbox"
                 id={item.id}
                 value={item.id}
+                checked={selectedSubCats.includes(item.id.toString())} // Add this to check the checkbox based on the selectedSubCats array
                 onChange={handleChange}
               />
               <label htmlFor={item.id}>{item.attributes.title}</label>
@@ -53,33 +65,36 @@ const Products = () => {
               id="asc"
               value="asc"
               name="price"
-              onChange={(e) => setSort("asc")}
+              onChange={(e) => setSort('asc')}
             />
             <label htmlFor="asc">Price (Lowest first)</label>
           </div>
           <div className="inputItem">
             <input
+            checked={selectedSubCats.includes(sort)}
               type="radio"
               id="desc"
               value="desc"
               name="price"
-              onChange={(e) => setSort("desc")}
+              onChange={(e) => setSort('desc')}
             />
             <label htmlFor="desc">Price (Highest first)</label>
           </div>
         </div>
       </div>
       <div className="right">
-        <img
-          className="catImg"
-          src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt=""
-        />
-        {error
-          ? "Something went wrong!"
-          : loading
-          ? "loading"
-          :<List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats}/>}
+        {error ? (
+          'Something went wrong!'
+        ) : loading ? (
+          'loading'
+        ) : (
+          <List
+            catId={catId}
+            maxPrice={maxPrice}
+            sort={sort}
+            subCats={selectedSubCats}
+          />
+        )}
       </div>
     </div>
   );

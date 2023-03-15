@@ -1,25 +1,25 @@
-import React from 'react'
-import SimpleImageSlider from "react-simple-image-slider";
-const images = [
-    'https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    'https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    'https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  ];
-
-const Sslider = () => {
-  return (
-    <div>
-        <SimpleImageSlider
-        width="100%"
-        height={600}
-        images={images}
-        autoPlay={true}
-        loop={true}
-        showBullets={true}
-        showNavs={true}
-        />
-    </div>
-  )
+// src/component/Gallery.js
+import React from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+class Gallery extends React.Component {
+    render() {
+        return (
+            <div>
+                <Carousel autoPlay interval="3000" autoplay={true} transitionTime="3000" infiniteLoop>
+                    <div>
+                        <img src='/img/monsapoSlider.png' alt="" />
+                    </div>
+                    <div>
+                        <img src='/img/Grun.png' alt="" />
+                    </div>
+                    <div>
+                        <img src='/img/yoa.png' alt="" />
+                    </div>
+                  
+                </Carousel>
+            </div>
+        )
+    };
 }
-
-export default Sslider
+export default Gallery

@@ -1,24 +1,26 @@
-import  Children  from "react";
 import {
   createBrowserRouter,
   RouterProvider,
   Outlet
 } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
+import Nnavbar from "./components/Navbar/Nnavbar";
 import Home from "./pages/Home/Home";
 import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
 import Contact from "./pages/Contact/Contact";
 import "./app.scss"
-import Register from "./pages/Auth/Register";
+import Register from "./pages/Auth/Registration";
 import Login from "./pages/Auth/Login";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
   return (
     <div className="app">
-      <Navbar />
+      <Nnavbar />
       <Outlet />
+      <ToastContainer/>
       <Footer />
     </div>
   )
@@ -56,6 +58,7 @@ const router = createBrowserRouter([
     ]
   },
 ]);
+
 
 function App() {
   return (

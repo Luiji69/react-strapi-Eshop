@@ -16,15 +16,30 @@
       display: flex;
       align-items: center;
       gap: 25px;
+      text-transform: uppercase;
     }
     .center {
         font-size: 30px;
         letter-spacing: 2px;
+        img{
+          width: 200px;
+          align-items: center;
+          justify-content: center;
+        }
     }
     .right {
       display: flex;
       align-items: center;
       gap: 25px;
+      .search{
+        display: flex;
+        color: #777;
+        cursor: pointer;
+        input{
+          border-radius: 10px;
+          border: 1px solid #777;
+        }
+      }
 
       .icons{
         display: flex;
