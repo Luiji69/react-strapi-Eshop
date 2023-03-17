@@ -166,6 +166,7 @@ const SignUp = () => {
 
               <Form.Item>
                 <Button
+                  style={{ background: "#68944f" }}
                   type="primary"
                   htmlType="submit"
                   className="login_submit_btn"

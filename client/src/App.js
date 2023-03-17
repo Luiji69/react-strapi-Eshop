@@ -5,16 +5,15 @@ import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
 import Contact from './pages/Contact/Contact';
 import './app.scss';
-import { Route, Navigate } from "react-router-dom";
 import AppHeader from "./components/Navbar/Appheader";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
 import Profile from './components/Profile/Profile';
 import SocialCards from './components/SocialCards/SocialCards';
-import { getToken } from './helpers';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+
 
 const Layout = () => {
   return (

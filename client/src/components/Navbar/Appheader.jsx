@@ -23,6 +23,7 @@ const AppHeader = () => {
 
   const handleLogout = () => {
     removeToken();
+    window.location.reload();
     navigate('/signin', { replace: true });
   };
 

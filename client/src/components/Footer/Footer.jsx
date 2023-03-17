@@ -57,7 +57,7 @@ const Footer = () => {
             <img src={logo} alt="" />
           </div>
           <span className="copyright">
-            © Copyright 2023. CREATED BY Islem Baaziz. PREMIUM E-COMMERCE
+            © Copyright 2023. CREATED BY <a href='https://islembaaziz.netlify.app/'>Islem Baaziz.</a> PREMIUM E-COMMERCE
             SOLUTIONS.
           </span>
         </div>
