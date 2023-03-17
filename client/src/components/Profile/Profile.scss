@@ -1,0 +1,81 @@
+.profile_page_card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+  
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
+  }
+  
+  .ant-form-item-label {
+    text-align: left;
+    font-weight: 500;
+  
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+  }
+  
+  .ant-form-item-label > label {
+    font-size: 16px;
+  
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+  
+  .ant-form-item-control {
+    line-height: 32px;
+  }
+  
+  .ant-input,
+  .ant-input-affix-wrapper {
+    height: 40px;
+    font-size: 16px;
+    border-radius: 4px;
+  
+    @media (max-width: 768px) {
+      height: 32px;
+      font-size: 14px;
+    }
+  }
+  
+  .ant-form-item-control-input-content > .ant-form-item-control-input-textarea {
+    resize: none;
+    height: auto;
+  }
+  
+  .profile_save_btn {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    background-color: #68944f;
+      color: white;
+    font-size: 16px;
+    border-radius: 4px;
+  
+    @media (max-width: 768px) {
+      max-width: 160px;
+      height: 32px;
+      font-size: 14px;
+    }
+  }
+  
+  .ant-spin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  
+    .ant-spin-dot {
+      font-size: 20px;
+  
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+  

@@ -55,7 +55,7 @@ import {
   
           message.success(`Welcome back ${data.user.username}!`);
   
-          navigate("/profile", { replace: true });
+          navigate("/", { replace: true });
         }
       } catch (error) {
         console.error(error);
