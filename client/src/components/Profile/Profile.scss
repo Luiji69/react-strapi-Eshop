@@ -1,81 +1,47 @@
 .profile_page_card {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 24px;
-  
-    @media (max-width: 768px) {
-      padding: 16px;
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .ant-form-item {
+    margin-bottom: 16px;
+
+    .ant-select {
+      width: 200px;
+      margin-left: -1px;
     }
   }
-  
+
   .ant-form-item-label {
     text-align: left;
-    font-weight: 500;
-  
-    @media (max-width: 768px) {
-      text-align: center;
-    }
   }
-  
-  .ant-form-item-label > label {
-    font-size: 16px;
-  
-    @media (max-width: 768px) {
-      font-size: 14px;
-    }
-  }
-  
-  .ant-form-item-control {
-    line-height: 32px;
-  }
-  
-  .ant-input,
-  .ant-input-affix-wrapper {
-    height: 40px;
-    font-size: 16px;
-    border-radius: 4px;
-  
-    @media (max-width: 768px) {
-      height: 32px;
-      font-size: 14px;
-    }
-  }
-  
-  .ant-form-item-control-input-content > .ant-form-item-control-input-textarea {
-    resize: none;
-    height: auto;
-  }
-  
-  .profile_save_btn {
-    margin-top: 24px;
+
+  .ant-input {
     width: 100%;
-    max-width: 200px;
-    height: 40px;
-    background-color: #68944f;
-    color: white;
-    font-size: 16px;
-    border-radius: 4px;
-  
-    @media (max-width: 768px) {
-      max-width: 160px;
-      height: 32px;
-      font-size: 14px;
-    }
   }
-  
-  .ant-spin {
+  .ant-col {
+    margin-right: 20px;
+  }
+
+  .profile_save_btn {
+    background-color: #68944f;
+    border-color: #68944f;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100%;
-  
-    .ant-spin-dot {
-      font-size: 20px;
-  
-      @media (max-width: 768px) {
-        font-size: 16px;
+    color: #ffffff;
+    &:hover,
+    &:focus {
+      background-color: darken(#68944f, 10%);
+      border-color: darken(#68944f, 10%);
+      .spin {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
       }
     }
   }
-  
+}

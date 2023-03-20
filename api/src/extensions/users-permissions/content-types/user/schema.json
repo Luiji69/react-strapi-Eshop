@@ -63,10 +63,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "avatar_url": {
-      "type": "string",
-      "regex": "        RegExp pattern: [(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-    },
     "Name": {
       "type": "string",
       "required": true
@@ -83,42 +79,16 @@
       "type": "text",
       "required": true
     },
-    "Region": {
-      "type": "enumeration",
-      "enum": [
-        "Ariana",
-        "Béja",
-        "Ben arous",
-        "Bizert",
-        "Gabes",
-        "Gafsa",
-        "Jandouba",
-        "Kairaoun",
-        "Kassrine",
-        "Kebili",
-        "La Manouba",
-        "Le Kef",
-        "Mahdia",
-        "Mednine",
-        "Monastir",
-        "Nabeul",
-        "Sfax",
-        "Sidi Bouzid",
-        "Seliana",
-        "Sousse",
-        "Tatouine",
-        "Tozeur",
-        "Tunis",
-        "Zaghouan"
-      ],
-      "required": true
-    },
     "City": {
       "type": "string",
       "required": true
     },
-    "Additional_information": {
-      "type": "text"
+    "Region": {
+      "type": "string",
+      "required": true
+    },
+    "Additional_phone": {
+      "type": "biginteger"
     }
   }
 }

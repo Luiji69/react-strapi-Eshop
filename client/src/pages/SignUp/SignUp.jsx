@@ -4,6 +4,7 @@ import {
   Card,
   Col,
   Form,
+  Select,
   Input,
   message,
   Row,
@@ -17,10 +18,405 @@ import { useAuthContext } from '../../context/AuthContext';
 import useScreenSize from '../../components//hooks/useScreenSize';
 import { API } from '../../constant';
 import { setToken } from '../../helpers';
+const provinceData = [
+  'Ariana',
+  'Béja',
+  'Ben_arous',
+  'Bizert',
+  'Gabes',
+  'Gafsa',
+  'Jandouba',
+  'Kairaoun',
+  'Kassrine',
+  'Kebili',
+  'Manouba',
+  'Elkef',
+  'Mahdia',
+  'Mednine',
+  'Monastir',
+  'Nabeul',
+  'Sfax',
+  'Sidi_Bouzid',
+  'Seliana',
+  'Sousse',
+  'Tatouine',
+  'Tozeur',
+  'Tunis',
+  'Zaghouan',
+];
+
+const cityData = {
+  Ariana: [
+    'Ariana Ville',
+    'Borj El Baccouch',
+    'Borj Louzir',
+    'Borj Touil',
+    'Cebelet Ben Ammar',
+    'Charguia II',
+    'Cité El Ghazala',
+    'Ennaser 1',
+    'Ennaser 2',
+    'Ettadhamen',
+    'Kalaat Landlous',
+    'La Soukra',
+    'Menzah 1',
+    'Menzah 5',
+    'Menzah 6',
+    'Menzah 7',
+    'Menzah 8',
+    'Mnihla',
+    'Raoued',
+    'Riadh El Andalous',
+    'Sidi Thabet',
+  ],
+  Béja: [
+    'Amdoun',
+    'Beja Nord',
+    'Beja Sud',
+    'Goubellat',
+    'Mjez El Bab',
+    'Nefza',
+    'Teboursouk',
+    'Testour',
+    'Thibar',
+  ],
+  Ben_arous: [
+    'Ben Arous',
+    'Bir El Bey',
+    'Bir El Kassaa',
+    'Borj Cedria',
+    'Boumhal El Basetine',
+    'Boukornine',
+    'El Mourouj',
+    'El Yasminette',
+    'Ezzahra',
+    'Fouchana',
+    'Hammam Chatt',
+    'Hammam Lif',
+    'Khelidia',
+    'Megrine',
+    'Mohamadia',
+    'Mornag',
+    'Mourouj 1',
+    'Mourouj 3',
+    'Mourouj 4',
+    'Mourouj 5',
+    'Mourouj 6',
+    'Naassen',
+    'Nouvelle Medina',
+    'Rades',
+  ],
+  Bizert: [
+    'Bizert Nord',
+    'Bizert Sud',
+    'El Alia',
+    'Ghar El Mellh',
+    'Ghezala',
+    'Joumine',
+    'Mateur',
+    'Menzel Bourguiba',
+    'Menzel Jemil',
+    'Ras Jebel',
+    'Sejnane',
+    'Tinja',
+    'Utique',
+    'Zarzouna',
+  ],
+  Gabes: [
+    'El Hamma',
+    'El Metouia',
+    'Gabes Medina ',
+    'Gabes Ouest',
+    'Gabes Sud',
+    'Ghannouche',
+    'Mareth',
+    'Matmata',
+    'Menzel Habib',
+    'Nouvelle Matmata',
+  ],
+  Gafsa: [
+    'Belkhir',
+    'El Guettar',
+    'el Ksar',
+    'El Mdhilla',
+    'Gafsa Nord',
+    'Gafsa Sud',
+    'Metlaoui',
+    'Moulares',
+    'Redeyef',
+    'Sidi Aich',
+    'Sned',
+  ],
+  Jandouba: [
+    'Ain Drahem',
+    'Balta Bou Aouene',
+    'Bou Salem',
+    'Fernana',
+    'Gharimaou',
+    'Jendouba',
+    'Jendouba Nord',
+    'Oued Mliz',
+    'Tabarka',
+  ],
+  Kairaoun: [
+    'Bou Hajla',
+    'Chebika',
+    'Cherarda',
+    'El Ala',
+    'Haffouz',
+    'Hajeb El Ayoun',
+    'Kairaouen Nord',
+    'Kairaouen Sud',
+    'Nasrallah',
+    'Oueslatia',
+    'Sbikha',
+  ],
+  Kassrine: [
+    'El Zouhour',
+    'El Ayoun',
+    'Feriana',
+    'Foussana',
+    'Haidra',
+    'Jediliane',
+    'Kasserine Nord',
+    'Kasserine Sud',
+    'Mejel Bel Abbes',
+    'Sbitla',
+    'Sbiba',
+    'Thala',
+  ],
+  Kebili: ['Douz', 'El Faouar', 'Kebili Nord', 'Kebili Sud', 'Souk El Ahed'],
+  Manouba: [
+    'Borj El Amri',
+    'Borj Etoumi',
+    'Chabbaou',
+    'Chaouat',
+    'Complexe Universitaire',
+    'Denden',
+    'Douar Hicher',
+    'Eddkhila',
+    'El Battan',
+    'El Fejja',
+    'Mannouba',
+    'Mornaguia',
+    'Oued Elil',
+    'Tebourba',
+    'Jedaida',
+  ],
+  Elkef: [
+    'Dahmani',
+    'El Ksour',
+    'Jerissa',
+    'Kalaa El Khasba',
+    'Kalaat Sinane',
+    'Le Kef Est',
+    'Le Kef Ouest',
+    'Le Sers',
+    'Nebeur',
+    'Sakiat Sidi Youssef',
+    'Tajerouine',
+    'Touiref',
+  ],
+  Mahdia: [
+    'Bou Merdes',
+    'Chorbane',
+    'El Jem',
+    'Hbira',
+    'Ksour Essaf',
+    'Le Chebba',
+    'Mahdia',
+    'Melloulech',
+    'Oued Chamakh',
+    'Sidi Alouene',
+    'Souassi',
+  ],
+  Mednine: [
+    'Ajim',
+    'Ben Guerdane',
+    'Beni Khedache',
+    'Houmet Essouk',
+    'Medenine Nord',
+    'Medenine Sud',
+    'Midoun',
+    'Sidi Makhlouf',
+    'Zarzis',
+  ],
+  Monastir: [
+    'Bekalta',
+    'Bembla',
+    'Beni Hassen',
+    'Jemmal',
+    'Ksar Helal',
+    'Ksibet El Mediouni',
+    'Moknine',
+    'Monastir',
+    'Ouerdanine',
+    'Sahline',
+    'Sayda Lamta Bou Hjar',
+    'Teboulba',
+    'Zeramdine',
+  ],
+  Nabeul: [
+    'Beni Khalled',
+    'Beni Khiar',
+    'Bou argoub',
+    'Dar Chaabane Elfehri',
+    'El Haouria',
+    'El Mida',
+    'Grombalia',
+    'Hammem El Ghezaz',
+    'Hammamet',
+    'Kelibia',
+    'Korba',
+    'Menzel Bouzelfa',
+    'Menzel Temime',
+    'Nabeul',
+    'Soliman',
+    'Takelsa',
+  ],
+  Sfax: [
+    'Agareb',
+    'Bir Ali Ben Khalifa',
+    'El Amra',
+    'El Hancha',
+    'Esskhira',
+    'Ghraiba',
+    'Jebeniana',
+    'Kerkenah',
+    'Mahres',
+    'Menzel Chaker',
+    'Sakiat Eddaier',
+    'Sakiat Ezzit',
+    'Sfax Est',
+    'Sfax Sud',
+    'Sfax Ville',
+  ],
+  Sidi_Bouzid: [
+    'Ben Oun',
+    'Bir El Haffey',
+    'Cebbala',
+    'Jilma',
+    'Maknassy',
+    'Menzel Bouzaiene',
+    'Mezzouna',
+    'Ouled Haffouz',
+    'Regueb',
+    'Sidi Bouzid Est',
+    'Sidi Bouzid Ouest',
+    'Souk Jedid',
+  ],
+  Seliana: [
+    'Bargou',
+    'Bou Arada',
+    'El Aroussa',
+    'Gaafour',
+    'Kesra',
+    'Le Krib',
+    'Mokhtar',
+    'Rohia',
+    'Sidi Bou Rouis',
+    'Siliana Nord',
+    'Siliana Sud',
+  ],
+  Sousse: [
+    'Akouda',
+    'Bou Ficha',
+    'Enfidha',
+    'Hamma Sousse',
+    'Hergla',
+    'Kalaa El Kebira',
+    'Kalaa El Sghira',
+    'Kondar',
+    'Msaken',
+    'Sidi Bou Ali',
+    'Sidi El Heni',
+    'Sousse Jaouhara',
+    'Sousse Riadh',
+    'Sousse Ville',
+  ],
+  Tatouine: [
+    'Bir Lahmar',
+    'Dehiba',
+    'Ghomrassen',
+    'Remada',
+    'Smar',
+    'Tataouine Nord',
+    'Tataouine Sud',
+  ],
+  Tozeur: ['Degueche', 'Hezoua', 'Nefta', 'Tamaghza', 'Tozeur'],
+  Tunis: [
+    'Bab Bhar',
+    'Bab Bnet',
+    'Bab El Falla',
+    'Bab El Khadhra',
+    'Bab Mnara',
+    'Bab Saadoun',
+    'Bab Jedid',
+    'Bab Souika',
+    'Belvedere',
+    'Carthage',
+    'Cité El Khadra',
+    'Cité El Mahrajen',
+    'Cité Hlel',
+    'Cité Ibn Khaldoun',
+    'Cité Ibn Sina',
+    'Cité Intilaka',
+    'Cité Rommana',
+    'El Agba',
+    'El Aouina',
+    'El Hrairia',
+    'El Kabaria',
+    'El Kram',
+    'El Manzah',
+    'El Omrane',
+    'El Omrane Superieur',
+    'El Ouerdia',
+    'Essijoumi',
+    'Ettahrir',
+    'Ezzouhour',
+    'Gammart',
+    'Hafsia',
+    'Jardins De Carthage',
+    'Jebal Jelloud',
+    'La Goulette',
+    'La Mars',
+    'La Medina',
+    'Le Bardo',
+    'Les Berges Du Lac 1',
+    'Les Berges Du Lac 2',
+    'Manar 1',
+    'Manar 2',
+    'Manar 3',
+    'Menzah 4',
+    ' Menzah 9',
+    'Montplaisir',
+    'mourouj 2',
+    'Sidi Bou Said',
+    'Sidi El Bechir',
+    'Sidi Hassine',
+  ],
+  Zaghouan: [
+    'Bir Mcherga',
+    'El Fahs',
+    'Ennadhour',
+    'Hammam Zriba',
+    'Saouef',
+    'Zaghouan',
+  ],
+};
 
 const SignUp = () => {
   const { isDesktopView } = useScreenSize();
   const navigate = useNavigate();
+  const [cities, setCities] = useState(cityData[provinceData[0]]);
+  const [secondCity, setSecondCity] = useState(cityData[provinceData[0]][0]);
+  const handleProvinceChange = (value) => {
+    setCities(cityData[value]);
+    setSecondCity(cityData[value][0]);
+  };
+  const onSecondCityChange = (value) => {
+    setSecondCity(value);
+  };
 
   const { setUser } = useAuthContext();
 
@@ -119,10 +515,10 @@ const SignUp = () => {
                 label="Name"
                 name="Name"
                 rules={[
-                    {
-                     required: true,
-                      type: 'string', 
-                    },
+                  {
+                    required: true,
+                    type: 'string',
+                  },
                 ]}
               >
                 <Input placeholder="Name" />
@@ -155,18 +551,45 @@ const SignUp = () => {
               <Form.Item
                 label="Region"
                 name="Region"
-                rules={[{ required: true }]}
+                rules={[
+                  {
+                    required: true,
+                    type: 'string',
+                  },
+                ]}
               >
-                <Input placeholder="Your region" />
+                <Select
+                  style={{ width: 420 }}
+                  initialvalues={provinceData[0]}
+                  onChange={handleProvinceChange}
+                  options={provinceData.map((province) => ({
+                    label: province,
+                    value: province,
+                  }))}
+                />
               </Form.Item>
 
-              <Form.Item label="City" name="City" rules={[{ required: true }]}>
-                <Input placeholder="Your city" />
+              <Form.Item
+                label="City"
+                name="City"
+                rules={[
+                  {
+                    required: true,
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Select
+                  style={{ width: 420 }}
+                  value={secondCity}
+                  onChange={onSecondCityChange}
+                  options={cities.map((city) => ({ label: city, value: city }))}
+                />
               </Form.Item>
 
               <Form.Item>
                 <Button
-                  style={{ background: "#68944f" }}
+                  style={{ background: '#68944f' }}
                   type="primary"
                   htmlType="submit"
                   className="login_submit_btn"
