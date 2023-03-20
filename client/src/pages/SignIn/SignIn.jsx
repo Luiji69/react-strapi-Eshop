@@ -118,7 +118,7 @@ const SignIn = () => {
               </Form.Item>
             </Form>
             <Typography.Paragraph className="form_help_text">
-              New to Social Cards? <Link to="/signup">Sign Up</Link>
+              New to The Green Box Tn? <Link to="/signup">Sign Up</Link>
             </Typography.Paragraph>
           </Card>
         </Col>

@@ -537,7 +537,7 @@ const SignUp = () => {
                 name="Phone"
                 rules={[{ required: true }]}
               >
-                <Input placeholder="Your phone number" />
+                <Input placeholder="Your phone number" prefix="+216" />
               </Form.Item>
 
               <Form.Item
