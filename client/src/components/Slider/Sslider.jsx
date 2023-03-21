@@ -8,13 +8,13 @@ class Gallery extends React.Component {
             <div>
                 <Carousel autoPlay interval="3000" autoplay={true} transitionTime="3000" infiniteLoop>
                     <div>
-                        <img src='/img/monsapoSlider.png' alt="" />
+                        <img src='/img/ms1.png' alt="" />
                     </div>
                     <div>
-                        <img src='/img/Grun.png' alt="" />
+                        <img src='/img/Grun1.png' alt="" />
                     </div>
                     <div>
-                        <img src='/img/yoa.png' alt="" />
+                        <img src='/img/yoa1.png' alt="" />
                     </div>
                   
                 </Carousel>

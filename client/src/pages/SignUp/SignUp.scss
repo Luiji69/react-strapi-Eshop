@@ -1,0 +1,29 @@
+$primary-color: #68944f;
+
+@media only screen and (max-width: 768px) {
+  .ant-col {
+    padding: 0px !important;
+  }
+}
+
+.ant-card {
+    margin-top: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert_error {
+  margin-bottom: 24px;
+}
+
+.form_help_text {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.login_submit_btn {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+

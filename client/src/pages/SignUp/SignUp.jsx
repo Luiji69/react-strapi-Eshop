@@ -18,6 +18,7 @@ import { useAuthContext } from '../../context/AuthContext';
 import useScreenSize from '../../components//hooks/useScreenSize';
 import { API } from '../../constant';
 import { setToken } from '../../helpers';
+import './SignUp.scss'
 const provinceData = [
   'Ariana',
   'Béja',

@@ -29,7 +29,7 @@ const AppHeader = () => {
 
   return (
     <Space className="header_space">
-      <Button className="her_space_brand" href="/" type="link">
+      <Button className="header_space_brand" href="/" type="link">
         <img
           src={logo}
           alt="Logo"
@@ -58,7 +58,11 @@ const AppHeader = () => {
       <div className="wrapper">
         <div className="right">
           <div className="search">
-            <input type="text" placeholder="Search a product ..." onClick={() => setShowSearch(true)} />
+            <input
+              type="text"
+              placeholder="Search a product ..."
+              onClick={() => setShowSearch(true)}
+            />
             <SearchIcon onClick={() => setShowSearch(true)} />
           </div>
           <div className="icons">
@@ -70,7 +74,7 @@ const AppHeader = () => {
           </div>
         </div>
         {open && <Cart />}
-        {showSearch && <Search setShowSearch={setShowSearch}/>}
+        {showSearch && <Search setShowSearch={setShowSearch} />}
       </div>
       <Space className="auth_buttons">
         {user ? (
@@ -104,5 +108,7 @@ const AppHeader = () => {
     </Space>
   );
 };
+
+
 
 export default AppHeader;

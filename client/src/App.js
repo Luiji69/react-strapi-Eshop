@@ -15,10 +15,12 @@ import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 
 
+
+
 const Layout = () => {
   return (
     <div className="app">
-      <AppHeader />
+     <AppHeader/>
       <Outlet />
       <ToastContainer />
       <Footer />
@@ -63,7 +65,7 @@ const router = createBrowserRouter([
         path:'/socialCards',
         element:<SocialCards />,
       },
-    ],
+     ],
   },
 ]);
 

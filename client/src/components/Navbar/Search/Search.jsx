@@ -19,8 +19,6 @@ const Search = ({ setShowSearch }) => {
   if (!query.length) {
     data = null;
   }
-  console.log(data);
-
   return (
     <div className="search-modal">
       <div className="form-field">
