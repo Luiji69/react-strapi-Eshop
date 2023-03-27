@@ -72,6 +72,9 @@
     "isnew": {
       "type": "boolean",
       "default": false
+    },
+    "oldPrice": {
+      "type": "decimal"
     }
   }
 }

@@ -3,11 +3,12 @@ import './Card.scss';
 import { Link } from 'react-router-dom';
 
 const Card = ({ item }) => {
+
   return (
     <Link className="link" to={`/product/${item.id}`}>
       <div className="card">
         <div className="image">
-          {item?.attributes.isNew && <span>New Season</span>}
+          {item?.attributes.isnew && <span>New Product</span>}
           <img
             src={
               process.env.REACT_APP_UPLOAD_URL +
@@ -27,7 +28,7 @@ const Card = ({ item }) => {
         </div>
         <h2>{item?.attributes.title}</h2>
         <div className="prices">
-          <h3>{item.oldPrice || item?.attributes.price + 20} د.ت</h3>
+          <h3>{item?.attributes.oldPrice || item?.attributes.price + 5} د.ت</h3>
           <h3>{item?.attributes.price} د.ت</h3>
         </div>
       </div>

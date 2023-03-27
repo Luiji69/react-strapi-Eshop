@@ -39,16 +39,16 @@ const Contact = () => {
         <div className="social-media">
           <p>Connect with us :</p>
           <div className="social-icons">
-            <a href="#">
+            <a href="https://www.facebook.com/thegreenboxtn">
               <FacebookIcon/>
             </a>
             <a href="#">
               <TwitterIcon/>
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/the_green_box_tn/">
               <InstagramIcon/>
             </a>
-            <a href="#">
+            <a href="https://www.linkedin.com/company/the-green-box-coworking">
               <LinkedInIcon/>
             </a>
           </div>

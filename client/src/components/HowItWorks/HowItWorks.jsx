@@ -3,6 +3,7 @@ import './HowItWorks.scss';
 import aaaa1 from '../../assets/aaaa1.png';
 import bb from '../../assets/bb.png';
 import cc from '../../assets/cc.png';
+import { Link } from 'react-router-dom';
 
 const HowItWorks = () => {
   return (
@@ -38,7 +39,9 @@ const HowItWorks = () => {
         </div>
       </div>
       <div className="button-container">
-        <button>Shop Now</button>
+      <Link to="/contact">
+        <button>Contact Us</button>
+        </Link>
       </div>
     </div>
   );

@@ -13,6 +13,8 @@ import Profile from './components/Profile/Profile';
 import SocialCards from './components/SocialCards/SocialCards';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import CheckOut from './components/CheckOut/CheckOut'
+import ScrollToTop from "react-scroll-to-top";
 
 
 
@@ -20,6 +22,7 @@ import SignUp from './pages/SignUp/SignUp';
 const Layout = () => {
   return (
     <div className="app">
+       <ScrollToTop smooth color="#ffffff" style={{background: '#68944f',}}/>
      <AppHeader/>
       <Outlet />
       <ToastContainer />
@@ -64,6 +67,10 @@ const router = createBrowserRouter([
       {
         path:'/socialCards',
         element:<SocialCards />,
+      },
+      {
+        path:'/checkout',
+        element:<CheckOut />,
       },
      ],
   },

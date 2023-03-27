@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
 import useFetch from '../../components/hooks/useFetch';
+import RelatedProducts from './RelatedProducts/RelatedProducts'
 
 const Product = () => {
   const id = useParams().id;
@@ -104,7 +105,9 @@ const Product = () => {
           </div>
         </>
       )}
+  
     </div>
+    
   );
 };
 

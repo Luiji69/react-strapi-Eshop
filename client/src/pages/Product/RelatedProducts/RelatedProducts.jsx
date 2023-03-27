@@ -1,9 +1,8 @@
 import React from 'react'
-import './RelatedProducts.scss'
 
 const RelatedProducts = () => {
   return (
-    <div className='relatedProducts'>RelatedProducts</div>
+    <div>RelatedProducts</div>
   )
 }
 
