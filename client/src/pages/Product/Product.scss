@@ -1,7 +1,11 @@
 .product {
-  padding: 20px 50px;
-  display: flex;
-  gap: 50px;
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px 50px;
+    gap: 50px;
 
   .left {
     flex: 1;
@@ -12,7 +16,7 @@
       flex: 1;
 
       img {
-        width: 100%;
+        width: 100px;
         height: 150px;
         object-fit: cover;
         cursor: pointer;
@@ -30,6 +34,9 @@
         object-fit: cover;
       }
     }
+  }
+  .col {
+    width: 100%;
   }
 
   .right {
@@ -141,5 +148,9 @@
     .right {
       gap: 10px;
     }
+    .buttom {
+      margin-top: 500px !important;
+    }
   }
+}
 }

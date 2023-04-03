@@ -4,14 +4,17 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
+
 const Contact =  () => {
+
+
 
   return (
     <div className="contact">
       <div className="wrapper">
         <span>GET IN TOUCH WITH US:</span>
         <div className="mail">
-          <input type="text" name="email" placeholder="Enter your e-mail..." />
+          <input type="email" name="email" placeholder="Enter your e-mail..." />
           <button>JOIN US</button>
         </div>
         <div className="icons">

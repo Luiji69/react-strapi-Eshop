@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import './Product.scss';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
@@ -11,12 +10,14 @@ import RelatedProducts from './RelatedProducts/RelatedProducts'
 
 const Product = () => {
   const id = useParams().id;
+
   const [selectedImg, setSelectedImg] = useState('img');
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
-
+  const categoryId = data?.attributes?.categories?.data[0]?.id;
+console.log(data);
   return (
     <div className="product">
       {error ? (
@@ -25,6 +26,7 @@ const Product = () => {
         'loading'
       ) : (
         <>
+        <div className="row">
           <div className="left">
             <div className="images">
               <img
@@ -86,11 +88,7 @@ const Product = () => {
             >
               <AddShoppingCartIcon /> ADD TO CART
             </button>
-            <div className="links">
-              <div className="item">
-                <FavoriteBorderIcon /> ADD TO WISH LIST
-              </div>
-            </div>
+            
             <div className="info">
               <span>
                 sub-category:{' '}
@@ -103,11 +101,15 @@ const Product = () => {
             </div>
             <hr />
           </div>
+          </div>
+          <div className="row">
+        <div className="col">
+          <RelatedProducts categoryId={categoryId}/>
+        </div>
+      </div>
         </>
       )}
-  
     </div>
-    
   );
 };
 

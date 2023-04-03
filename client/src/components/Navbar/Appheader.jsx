@@ -7,7 +7,6 @@ import { removeToken } from '../../helpers';
 import './Appheader.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Search from './Search/Search';
 
 
@@ -66,7 +65,7 @@ const AppHeader = () => {
             <SearchIcon onClick={() => setShowSearch(true)} />
           </div>
           <div className="icons">
-            <FavoriteBorderIcon />
+            
             <div className="cartIcon" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon />
               <span>{products.length}</span>

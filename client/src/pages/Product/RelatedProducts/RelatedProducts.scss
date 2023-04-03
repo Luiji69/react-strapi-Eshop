@@ -1,1 +1,15 @@
-.relatedProducts{}
+.relatedProducts{
+    .buttom {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: center;
+      }
+      
+      .card {
+        flex: 0 0 auto;
+        width: 300px; // Change this value to adjust the width of the cards
+        margin-right: 16px; // Change this value to adjust the space between the cards
+      }
+      
+}

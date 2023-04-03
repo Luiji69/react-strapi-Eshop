@@ -5,68 +5,49 @@ import EmailIcon from '@mui/icons-material/Email';
 import './Footer.scss';
 import logo from '../../assets/logo.png';
 
-const Footer = () => {
+function Footer() {
   return (
-    <div className="footer">
-      <div className="top">
-        <div className="item">
-          <h1 className='links'>Categories</h1>
-          <a href="/products/4"><span>Cosmetics</span></a>
-          <a href="/products/7"><span>Food</span></a>
-          <a href="/products/6"><span>Accessories</span></a>
-          <a href="/products/8"><span>Cleaners</span></a>
-          <a href="/products/5"><span>Home decoration</span></a>
-          <a href="/products/9"><span>Other</span></a>
+    <footer>
+      <div className="row">
+        <div className="column">
+          <h3>Categories</h3>
+          <ul>
+            <li><a href="/products/4">Cosmetics</a></li>
+            <li><a href="/products/7">Food</a></li>
+            <li><a href="/products/6">Accessories</a></li>
+            <li><a href="/products/8">Cleaners</a></li>
+            <li><a href="/products/5">Home decoration</a></li>
+            <li><a href="/products/9">Other</a></li>
+          </ul>
         </div>
-        <div className="item">
-          <h1>Links</h1>
-          <span>FAQ</span>
-          <span>Pages</span>
-          <span>Stores</span>
-          <span>Compare</span>
-          <span>Cookies</span>
+        <div className="column">
+          <h3>Pages</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="/Contact">Contact Us</a></li>
+          </ul>
         </div>
-        <div className="item">
-          <h1>About</h1>
-          <span>
-            The Green Box Shop is a green driven marketplace, making accessible<br />
-            eco-responsible,<br />Natural and artisanal products ☘️
-            <br />
-            Shop responsibly!
-          </span>
+        <div className="column">
+          <h3>About</h3>
+          <p>The Green Box Shop is a green driven marketplace, making accessible eco-responsible, Natural and artisanal products ☘️ Shop responsibly!</p>
         </div>
-        <div className="item">
-          <h1>Contact</h1>
-          <div className="c-item">
-            <LocationOnIcon />
-            <div className="text">13 Rue Tahar Memmi,<br />Ariana 2091​</div>
-          </div>
-          <div className="c-item">
-            <PhoneAndroidIcon />
-            <div className="text">Phone: +216 90 203 724​</div>
-          </div>
-          <div className="c-item">
-            <EmailIcon />
-            <div className="text">Email: shop@thegreenboxtn.com​</div>
-          </div>
+        <div className="column">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><LocationOnIcon/> 13 Rue Tahar Memmi, Ariana 2091​</li>
+            <li><PhoneAndroidIcon/> Phone: +216 90 203 724​</li>
+            <li><EmailIcon/> Email: shop@thegreenboxtn.com​</li>
+          </ul>
         </div>
       </div>
-      <div className="bottom">
-        <div className="left">
-          <div className="image-container">
-            <img src={logo} alt="" />
-          </div>
-          <span className="copyright">
-            © Copyright 2023. CREATED BY <a href='https://islembaaziz.netlify.app/'>Islem Baaziz.</a> PREMIUM E-COMMERCE
-            SOLUTIONS.
-          </span>
-        </div>
-        <div className="right">
-          <img src="/img/payment.png" alt="" />
-        </div>
+      <div className="row">
+        <img src={logo} alt="The Green Box Shop Logo" />
+        <p className='copy'>© Copyright 2023.
+        CREATED BY <a href='https://islembaaziz.netlify.app/'>Islem Baaziz.</a> PREMIUM E-COMMERCE SOLUTIONS.</p>
       </div>
-    </div>
+    </footer>
   );
-};
+}
 
 export default Footer;
