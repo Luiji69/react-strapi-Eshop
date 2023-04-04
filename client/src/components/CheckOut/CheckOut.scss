@@ -5,9 +5,9 @@
     margin-left: 40px;
     width: 50%;
 
-    .scrol{
-        overflow-y: scroll;
-        height: 600px;
+    .scrol {
+      overflow-y: scroll;
+      height: 600px;
     }
     .item {
       display: flex;
@@ -27,6 +27,24 @@
         display: flex;
         align-items: center;
         gap: 10px;
+
+        button {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #68944f;
+          color: white;
+          cursor: pointer;
+          border: none;
+          border-radius: 10px;
+          font-weight: bold;
+        }
+        span {
+          padding-bottom: 20px;
+          font-weight: bold;
+        }
       }
     }
     .total {

@@ -5,10 +5,10 @@ import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
 import Contact from './pages/Contact/Contact';
 import './app.scss';
-import AppHeader from './components/Navbar/Appheader';
+import Navbar from './components/Navbar/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import React, { Component } from 'react';
+import React from 'react';
 import Profile from './components/Profile/Profile';
 import SocialCards from './components/SocialCards/SocialCards';
 import SignIn from './pages/SignIn/SignIn';
@@ -21,7 +21,8 @@ const Layout = () => {
   return (
     <div className="app">
       <ScrollToTop smooth color="#ffffff" style={{ background: '#68944f' }} />
-      <AppHeader />
+    
+      <Navbar/>
       <Outlet />
       <ToastContainer />
       <Footer />

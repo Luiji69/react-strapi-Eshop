@@ -526,7 +526,7 @@ const SignUp = () => {
               </Form.Item>
 
               <Form.Item
-                label="Last_name"
+                label="Last name"
                 name="last_name"
                 rules={[{ required: true }]}
               >
@@ -541,6 +541,13 @@ const SignUp = () => {
                 <Input placeholder="Your phone number" prefix="+216" />
               </Form.Item>
 
+              <Form.Item
+                label="Phone"
+                name="Additional_phone"
+              >
+                <Input placeholder="Additional phone number" prefix="+216" />
+              </Form.Item>
+              
               <Form.Item
                 label="Adresse"
                 name="Adresse"

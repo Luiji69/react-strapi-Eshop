@@ -1,6 +1,6 @@
 import './CheckOut.scss';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { removeItem} from '../../redux/cartReducer';
+import { removeItem, updateQuantity} from '../../redux/cartReducer';
 import {
   Button,
   Card,
@@ -468,6 +468,10 @@ const CheckOut = () => {
     return <Spin size="large" />;
   }
 
+  const handleQuantityChange = (id, quantity) => {
+    dispatch(updateQuantity({ id, quantity }));
+  };
+
   return (
     <div className="container ">
       <div className="left">
@@ -478,7 +482,24 @@ const CheckOut = () => {
             <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
             <div className="details">
               <h2>{item.title}</h2>
-              <p>{item.desc?.substring(0, 60)}</p>
+              <p>{item.desc?.substring(0, 60)} ...</p>
+              <div className="quantity">
+                <button
+                  onClick={() =>
+                    handleQuantityChange(item.id, item.quantity - 1)
+                  }
+                >
+                  -
+                </button>
+                {item.quantity}
+                <button
+                  onClick={() =>
+                    handleQuantityChange(item.id, item.quantity + 1)
+                  }
+                >
+                  +
+                </button>
+              </div>
               <div className="price">
                 {item.quantity} x {item.price} د.ت
               </div>

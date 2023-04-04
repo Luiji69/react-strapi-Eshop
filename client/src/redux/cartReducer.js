@@ -24,10 +24,21 @@ export const cartSlice = createSlice({
     resetCart: (state) => {
       state.products = [];
     },
+    updateQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+      const item = state.products.find((item) => item.id === id);
+      if (item) {
+        if (quantity < 1) {
+          item.quantity = 1;
+        } else {
+          item.quantity = quantity;
+        }
+      }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToCart, removeItem, resetCart } = cartSlice.actions;
+export const { addToCart, removeItem, resetCart, updateQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;

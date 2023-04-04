@@ -1,15 +1,46 @@
-.relatedProducts{
-    .buttom {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: center;
+.relatedProducts {
+  /* styles for the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .top {
+    /* styles for the top section */
+    text-align: center;
+    margin-bottom: 1rem;
+    @media (max-width: 768px) {
+      h1{
+        margin-top: -20px;
       }
-      
+    }
+  }
+
+  .bottom {
+    /* styles for the bottom section */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    /* styles for the cards */
+    .card {
+      flex: 1 1 25rem;
+      margin: 1rem;
+
+      /* media query for mobile view */
+      @media (max-width: 768px) {
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  /* media query for desktop view */
+  @media (min-width: 769px) {
+    .bottom {
+      flex-wrap: nowrap;
+
       .card {
-        flex: 0 0 auto;
-        width: 300px; // Change this value to adjust the width of the cards
-        margin-right: 16px; // Change this value to adjust the space between the cards
+        margin: 0 1rem;
       }
-      
+    }
+  }
 }
