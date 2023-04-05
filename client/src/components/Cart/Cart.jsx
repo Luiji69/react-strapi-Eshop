@@ -4,8 +4,9 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, resetCart, updateQuantity } from '../../redux/cartReducer';
 import { Link } from 'react-router-dom';
+import { MdClose } from 'react-icons/md';
 
-const Cart = () => {
+const Cart = ({setOpenCart}) => {
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
   const totalPrice = () => {
@@ -19,8 +20,11 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart">
+    <div className="cartpanel">
+      <div className="opctlayer" onClick={() => setOpenCart(false)}></div>
+      <div className="cart">
       <h1>Your cart</h1>
+      <MdClose className="close-btn" onClick={() => setOpenCart(false)} />
       <div className="scrol">
         {products?.map((item) => (
           <div className="item" key={item.id}>
@@ -67,6 +71,8 @@ const Cart = () => {
         Reset Cart
       </span>
     </div>
+    </div>
+    
   );
 };
 

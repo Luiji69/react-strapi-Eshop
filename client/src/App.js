@@ -21,7 +21,6 @@ const Layout = () => {
   return (
     <div className="app">
       <ScrollToTop smooth color="#ffffff" style={{ background: '#68944f' }} />
-    
       <Navbar/>
       <Outlet />
       <ToastContainer />

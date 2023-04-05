@@ -470,7 +470,9 @@ const Profile = () => {
         onFinish={handleProfileUpdate}
       >
         <Row>
+          <Col>
           <Title level={4}>Personal informations</Title>
+          </Col>
         </Row>
         <Row>
           <Col>
@@ -565,7 +567,11 @@ const Profile = () => {
                 },
               ]}
             >
-              <Input placeholder="Additional_phone" maxLength={8} prefix="+216" />
+              <Input
+                placeholder="Additional_phone"
+                maxLength={8}
+                prefix="+216"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -582,7 +588,6 @@ const Profile = () => {
               ]}
             >
               <Select
-                style={{ width: 420 }}
                 initialvalues={provinceData[0]}
                 onChange={handleProvinceChange}
                 options={provinceData.map((province) => ({
@@ -592,8 +597,6 @@ const Profile = () => {
               />
             </Form.Item>
           </Col>
-        </Row>
-        <Row>
           <Col>
             <Form.Item
               label="City"
@@ -606,7 +609,6 @@ const Profile = () => {
               ]}
             >
               <Select
-                style={{ width: 420 }}
                 value={secondCity}
                 onChange={onSecondCityChange}
                 options={cities.map((city) => ({ label: city, value: city }))}
@@ -617,6 +619,7 @@ const Profile = () => {
         <Row>
           <Col>
             <Form.Item
+            className='adresse'
               label="Adresse"
               name="Adresse"
               rules={[
@@ -627,10 +630,12 @@ const Profile = () => {
                 },
               ]}
             >
-              <Input placeholder="Adresse" style={{ width: 420 }} />
+              <Input placeholder="Adresse" />
             </Form.Item>
           </Col>
         </Row>
+        <Row>
+        <Col>
         <Button
           className="profile_save_btn"
           htmlType="submit"
@@ -645,6 +650,8 @@ const Profile = () => {
             'Save'
           )}
         </Button>
+        </Col>
+        </Row>
       </Form>
     </Card>
   );

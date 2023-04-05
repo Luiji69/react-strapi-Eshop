@@ -32,11 +32,6 @@ const Search = ({ setShowSearch }) => {
         <MdClose className="close-btn" onClick={() => setShowSearch(false)} />
       </div>
       <div className="search-result-content">
-        {!data?.data?.length && (
-          <div className="start-msg">
-            Start typing to see products you are looking for.
-          </div>
-        )}
         <div className="search-results">
           {data?.map((item) => (
             <div

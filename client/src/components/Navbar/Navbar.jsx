@@ -11,11 +11,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Search from './Search/Search';
 import { useSelector } from 'react-redux';
 import Cart from '../Cart/Cart';
+import Menu from './Menu';
 
 function Navbar() {
   const { user } = useAuthContext();
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const products = useSelector((state) => state.cart.products);
   const handleLogout = () => {
@@ -55,11 +57,11 @@ function Navbar() {
           />
         </div>
       </div>
-      {open && <Cart />}
+      {openCart && <Cart setOpenCart={setOpenCart} />}
       {showSearch && <Search setShowSearch={setShowSearch} />}
       <div className="navbar__right">
         <div className="icons">
-          <div className="carticon" onClick={() => setOpen(!open)}>
+          <div className="carticon" onClick={() => setOpenCart(!openCart)}>
             <ShoppingCartOutlinedIcon className="navbar__cartIcon" />
             <span>{products.length}</span>
           </div>
@@ -104,7 +106,8 @@ function Navbar() {
           )}
         </div>
 
-        <MenuIcon className="navbar__menuIcon" />
+        <MenuIcon className="navbar__menuIcon" onClick={() => setShowMenu(true)}/>
+        {showMenu && <Menu setShowMenu={setShowMenu} />}
       </div>
     </nav>
   );
