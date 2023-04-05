@@ -1,12 +1,23 @@
-import React from 'react';
 import Card from '../Card/Card';
 import './FeaturedProducts.scss';
 import useFetch from '../../components/hooks/useFetch';
+import React, { useEffect, useState } from 'react';
 
 const FeaturedProducts = ({ type }) => {
   const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][type][$eq]=${type}`
   );
+  const [randomData, setRandomData] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      // shuffle the data array
+      const shuffledData = data.sort(() => Math.random() - 0.5);
+      // take the first 4 items from the shuffled array
+      const slicedData = shuffledData.slice(0, 4);
+      setRandomData(slicedData);
+    }
+  }, [data]);
 
   return (
     <div className="featuredProducts">
@@ -23,7 +34,7 @@ const FeaturedProducts = ({ type }) => {
           ? 'Something went wrong!'
           : loading
           ? 'loading'
-          : data?.map((item) => <Card item={item} key={item.id} />)}
+          : randomData.map((item) => <Card item={item} key={item.id} />)}
       </div>
     </div>
   );
