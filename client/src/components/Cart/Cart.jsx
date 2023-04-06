@@ -6,8 +6,10 @@ import { removeItem, resetCart, updateQuantity } from '../../redux/cartReducer';
 import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import { useAuthContext } from '../../context/AuthContext';
 
 const Cart = ({setOpenCart}) => {
+  const { user } = useAuthContext();
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
   const totalPrice = () => {
@@ -30,26 +32,28 @@ const Cart = ({setOpenCart}) => {
         {products?.length > 0 ? (
         products?.map((item) => (
           <div className="item" key={item.id}>
+            <div className="image-container">
             <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
+            </div>
             <div className="details">
               <h1>{item.title}</h1>
               <p>{item.desc?.substring(0, 60)} ...</p>
               <div className="quantity">
-                <button
+                <Button className='cart__button' variant="contained"
                   onClick={() =>
                     handleQuantityChange(item.id, item.quantity - 1)
                   }
                 >
                   -
-                </button>
+                </Button>
                  <span>{item.quantity}</span>
-                <button
+                <Button className='cart__button' variant="contained"
                   onClick={() =>
                     handleQuantityChange(item.id, item.quantity + 1)
                   }
                 >
                   +
-                </button>
+                </Button>
               </div>
               <div className="price">
                 {item.quantity} x {item.price} د.ت
@@ -76,7 +80,13 @@ const Cart = ({setOpenCart}) => {
         <span>{totalPrice()} د.ت</span>
       </div>
       <div className="btnn">
-      <Button className='cart__button' variant="contained" href="/checkout">PROCEED TO CHECKOUT</Button>
+        <>
+        { user ? (
+          <Button className='cart__button' variant="contained" href="/checkout">PROCEED TO CHECKOUT</Button>
+        ) : (
+          <Button className='cart__button' variant="contained" href="/signin">LOGIN PLEASE</Button>
+        )}
+     </>
       <span className="reset" onClick={() => dispatch(resetCart())}>
         Reset Cart
       </span>

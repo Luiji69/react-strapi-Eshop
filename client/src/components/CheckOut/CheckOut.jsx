@@ -1,6 +1,7 @@
 import './CheckOut.scss';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { removeItem, updateQuantity} from '../../redux/cartReducer';
+import EditIcon from '@mui/icons-material/Edit';
+import { removeItem, updateQuantity } from '../../redux/cartReducer';
 import {
   Button,
   Card,
@@ -14,6 +15,7 @@ import {
   Row,
   Spin,
 } from 'antd';
+
 import { useAuthContext } from '../../context/AuthContext';
 import { API } from '../../constant';
 import { useState } from 'react';
@@ -22,7 +24,7 @@ import { EditOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 
 const { Title } = Typography;
 const provinceData = [
@@ -477,39 +479,57 @@ const CheckOut = () => {
       <div className="left">
         <Title>Your cart</Title>
         <div className="scrol">
-        {products?.map((item) => (
-          <div className="item" key={item.id}>
-            <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
-            <div className="details">
-              <h2>{item.title}</h2>
-              <p>{item.desc?.substring(0, 60)} ...</p>
-              <div className="quantity">
-                <button
-                  onClick={() =>
-                    handleQuantityChange(item.id, item.quantity - 1)
-                  }
-                >
-                  -
-                </button>
-                {item.quantity}
-                <button
-                  onClick={() =>
-                    handleQuantityChange(item.id, item.quantity + 1)
-                  }
-                >
-                  +
-                </button>
+          {products?.length > 0 ? (
+            products?.map((item) => (
+              <div className="item" key={item.id}>
+                <div className="image-container">
+                  <img
+                    src={process.env.REACT_APP_UPLOAD_URL + item.img}
+                    alt=""
+                  />
+                </div>
+                <div className="details">
+                  <h1>{item.title}</h1>
+                  <p>{item.desc?.substring(0, 60)} ...</p>
+                  <div className="quantity">
+                    <Button
+                      className="cart__button"
+                      variant="contained"
+                      onClick={() =>
+                        handleQuantityChange(item.id, item.quantity - 1)
+                      }
+                    >
+                      -
+                    </Button>
+                    <span>{item.quantity}</span>
+                    <Button
+                      className="cart__button"
+                      variant="contained"
+                      onClick={() =>
+                        handleQuantityChange(item.id, item.quantity + 1)
+                      }
+                    >
+                      +
+                    </Button>
+                  </div>
+                  <div className="price">
+                    {item.quantity} x {item.price} د.ت
+                  </div>
+                </div>
+                <DeleteOutlinedIcon
+                  className="delete"
+                  onClick={() => dispatch(removeItem(item.id))}
+                />
               </div>
-              <div className="price">
-                {item.quantity} x {item.price} د.ت
+            ))
+          ) : (
+            <>
+              <div className="empty">
+                <ProductionQuantityLimitsIcon className="cls_empty" />
+                <p>Your cart is empty</p>
               </div>
-            </div>
-            <DeleteOutlinedIcon
-              className="delete"
-              onClick={() => dispatch(removeItem(item.id))}
-            />
-          </div>
-        ))}
+            </>
+          )}
         </div>
         <div className="total">
           <span>SUBTOTAL + (10 د.ت Delivery price)</span>
@@ -517,223 +537,220 @@ const CheckOut = () => {
         </div>
       </div>
       <div className="right">
-        <Card className="profile_page_card">
-          <Row>
-            <Title>Delivery informations</Title>
-          </Row>
-          <Form
-            layout="vertical"
-            initialValues={{
-              username: user?.username,
-              email: user?.email,
-              Phone: user?.Phone,
-              Additional_phone: user?.Additional_phone,
-              Adresse: user?.Adresse,
-              Region: user?.Region,
-              Name: user?.Name,
-              City: user?.City,
-              last_name: user?.last_name,
-            }}
-            onFinish={handleProfileUpdate}
-          >
+        <div className="wrapper">
+          <Card className="profile_page_card">
             <Row>
-              <Title level={4}>Personal informations</Title>
+              <Title>Edit your profile</Title>
             </Row>
-            <Row>
-              <Col>
-                <Form.Item
-                  label="Username"
-                  name="username"
-                  rules={[
-                    {
-                      message: 'Username is required!',
-                      type: 'string',
-                    },
-                  ]}
-                >
-                  <Input placeholder="Username" disabled />
-                </Form.Item>
-              </Col>
-              <Col>
-                <Form.Item
-                  label="Email"
-                  name="email"
-                  rules={[
-                    {
-                      message: 'Email is required!',
-                      type: 'email',
-                    },
-                  ]}
-                >
-                  <Input placeholder="Email" disabled />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Item
-                  label="Name"
-                  name="Name"
-                  rules={[
-                    {
-                      message: 'Name is required!',
-                      type: 'string',
-                    },
-                  ]}
-                >
-                  <Input placeholder="Name" disabled />
-                </Form.Item>
-              </Col>
-              <Col>
-                <Form.Item
-                  label="last name"
-                  name="last_name"
-                  rules={[
-                    {
-                      type: 'string',
-                      message: 'Last name is required!',
-                    },
-                  ]}
-                >
-                  <Input placeholder="last_name" rows={6} disabled />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Title level={4}>Delivery information</Title>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Item
-                  label="Phone number"
-                  name="Phone"
-                  rules={[
-                    {
-                      message: 'Phone number required!',
-                      type: 'string',
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Phone"
-                    maxLength={8}
-                    prefix="+216"
-                    disabled
-                  />
-                </Form.Item>
-              </Col>
-              <Col>
-                <Form.Item
-                  label="Additional phone"
-                  name="Additional_phone"
-                  rules={[
-                    {
-                      type: 'string',
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Additional_phone"
-                    maxLength={8}
-                    prefix="+216"
-                    disabled
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Item
-                  label="Region"
-                  name="Region"
-                  rules={[
-                    {
-                      type: 'string',
-                    },
-                  ]}
-                >
-                  <Select
-                    style={{ width: 420 }}
-                    initialvalues={provinceData[0]}
-                    onChange={handleProvinceChange}
-                    options={provinceData.map((province) => ({
-                      label: province,
-                      value: province,
-                    }))}
-                    disabled
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Item
-                  label="City"
-                  name="City"
-                  rules={[
-                    {
-                      type: 'string',
-                    },
-                  ]}
-                >
-                  <Select
-                    style={{ width: 420 }}
-                    value={secondCity}
-                    onChange={onSecondCityChange}
-                    options={cities.map((city) => ({
-                      label: city,
-                      value: city,
-                    }))}
-                    disabled
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Item
-                  label="Adresse"
-                  name="Adresse"
-                  rules={[
-                    {
-                      message: 'Adresse is required!',
-                      type: 'string',
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Adresse"
-                    style={{ width: 420 }}
-                    disabled
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Link to="/profile">
-              <Button
-                icon={<EditOutlined />}
-                style={{ backgroundColor: '#68944f' }}
-                type="primary"
-              >
-                Edit
-              </Button>
-            </Link>
-          </Form>
-          <br />
-          <Form>
-            <Title level={4}>Payment Method</Title>
-            <Radio.Group onChange={handlePaymentChange} value={paymentMethod}>
+            <Form
+              layout="vertical"
+              initialValues={{
+                username: user?.username,
+                email: user?.email,
+                Phone: user?.Phone,
+                Additional_phone: user?.Additional_phone,
+                Adresse: user?.Adresse,
+                Region: user?.Region,
+                Name: user?.Name,
+                City: user?.City,
+                last_name: user?.last_name,
+              }}
+              onFinish={handleProfileUpdate}
+            >
               <Row>
-                <Radio value="delivery">Pay on Delivery</Radio>
+                <Col>
+                  <Title level={4}>Personal informations</Title>
+                </Col>
               </Row>
               <Row>
-                <Radio value="card">Pay with Card</Radio>
+                <Col>
+                  <Form.Item
+                    label="Username"
+                    name="username"
+                    rules={[
+                      {
+                        message: 'Username is required!',
+                        type: 'string',
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Username" disabled />
+                  </Form.Item>
+                </Col>
+                <Col>
+                  <Form.Item
+                    label="Email"
+                    name="email"
+                    rules={[
+                      {
+                        message: 'Email is required!',
+                        type: 'email',
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Email" disabled />
+                  </Form.Item>
+                </Col>
               </Row>
-            </Radio.Group>
-          </Form>
-        </Card>
+              <Row>
+                <Col>
+                  <Form.Item
+                    label="Name"
+                    name="Name"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Name is required!',
+                        type: 'string',
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Name" disabled />
+                  </Form.Item>
+                </Col>
+                <Col>
+                  <Form.Item
+                    label="last name"
+                    name="last_name"
+                    rules={[
+                      {
+                        required: true,
+                        type: 'string',
+                        message: 'Last name is required!',
+                      },
+                    ]}
+                  >
+                    <Input placeholder="last_name" rows={6} disabled />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Title level={4}>Delivery information</Title>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Item
+                    label="Phone number"
+                    name="Phone"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Phone number required!',
+                        type: 'string',
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Phone"
+                      maxLength={8}
+                      prefix="+216"
+                      disabled
+                    />
+                  </Form.Item>
+                </Col>
+                <Col>
+                  <Form.Item
+                    label="Additional phone"
+                    name="Additional_phone"
+                    rules={[
+                      {
+                        type: 'string',
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Additional_phone"
+                      maxLength={8}
+                      prefix="+216"
+                      disabled
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Item
+                    label="Region"
+                    name="Region"
+                    rules={[
+                      {
+                        required: true,
+                        type: 'string',
+                      },
+                    ]}
+                  >
+                    <Select
+                      initialvalues={provinceData[0]}
+                      disabled
+                      onChange={handleProvinceChange}
+                      options={provinceData.map((province) => ({
+                        label: province,
+                        value: province,
+                      }))}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col>
+                  <Form.Item
+                    label="City"
+                    name="City"
+                    rules={[
+                      {
+                        required: true,
+                        type: 'string',
+                      },
+                    ]}
+                  >
+                    <Select
+                      disabled
+                      value={secondCity}
+                      onChange={onSecondCityChange}
+                      options={cities.map((city) => ({
+                        label: city,
+                        value: city,
+                      }))}
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Item
+                    className="adresse"
+                    label="Adresse"
+                    name="Adresse"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Adresse is required!',
+                        type: 'string',
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Adresse" disabled />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Button
+                    className="profile_save_btn"
+                    htmlType="submit"
+                    type="string"
+                    size="large"
+                    href='/profile'
+
+                  >
+                    <EditIcon fontSize='20'style={{margin: '-2px 5px'}} />
+                      Edit profile
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </Card>
+        </div>
       </div>
     </div>
   );

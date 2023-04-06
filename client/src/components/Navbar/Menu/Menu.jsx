@@ -1,11 +1,11 @@
 import React from 'react';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '../../../context/AuthContext';
 import Button from '@mui/material/Button';
-import { removeToken } from '../../helpers';
+import { removeToken } from '../../../helpers';
 import { Link,useNavigate } from 'react-router-dom';
 import './Menu.scss';
 import { MdClose } from 'react-icons/md';
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
 
 const Menu = ({ setShowMenu }) => {
   const { user } = useAuthContext();

@@ -1,8 +1,9 @@
 import React from 'react'
 import './Contact.scss'
-
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import EmailIcon from '@mui/icons-material/Email';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
@@ -24,15 +25,15 @@ const Contact = () => {
         <div className="info">
           <div className="information">
             <img src="img/location.png" className="icon" alt="" />
-            <p>13 Rue Tahar Memmi,<br />Ariana 2091</p>
+            <p><LocationOnIcon/> 13 Rue Tahar Memmi,Ariana 2091</p>
           </div>
           <div className="information">
             <img src="img/email.png" className="icon" alt="" />
-            <p>Email: shop@thegreenboxtn.com</p>
+            <p><EmailIcon/> Email: shop@thegreenboxtn.com</p>
           </div>
           <div className="information">
             <img src="img/phone.png" className="icon" alt="" />
-            <p>Phone: +216 90 203 724</p>
+            <p><PhoneAndroidIcon/> Phone: +216 90 203 724</p>
           </div>
         </div>
 
@@ -41,9 +42,6 @@ const Contact = () => {
           <div className="social-icons">
             <a href="https://www.facebook.com/thegreenboxtn">
               <FacebookIcon/>
-            </a>
-            <a href="#">
-              <TwitterIcon/>
             </a>
             <a href="https://www.instagram.com/the_green_box_tn/">
               <InstagramIcon/>

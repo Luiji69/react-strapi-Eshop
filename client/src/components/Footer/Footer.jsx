@@ -24,7 +24,7 @@ function Footer() {
           <h3>Pages</h3>
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="/">About Us</a></li>
             <li><a href="/Contact">Contact Us</a></li>
           </ul>
         </div>
@@ -42,10 +42,12 @@ function Footer() {
         </div>
       </div>
       <div className="row">
+        <div className="bottomfooter">
         <img src={logo} alt="The Green Box Shop Logo" />
         <p className='copy'>© Copyright 2023.
         CREATED BY <a href='https://islembaaziz.netlify.app/'>Islem Baaziz.</a> PREMIUM E-COMMERCE SOLUTIONS.</p>
       </div>
+        </div>
     </footer>
   );
 }

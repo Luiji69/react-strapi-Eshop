@@ -3,67 +3,70 @@ $breakpoint-tablet: 768px;
 footer {
   background-color: #ededed;
   padding: 30px;
-  gap: 50px;
-  
+
+
   .row {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
-    
+    @media only screen and (max-width: 768px) {
+      display: block;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
-    
+
     .column {
       flex: 1 1 25%;
       padding: 0 10px;
       margin-bottom: 20px;
       text-align: justify;
-      
+
       h3 {
         font-size: 16px;
         font-weight: bold;
         margin-bottom: 10px;
         color: #555;
       }
-      
+
       ul {
         list-style: none;
         margin: 0;
         padding: 0;
         color: #555;
-        
+
         li {
           margin-bottom: 5px;
-          
+
           a {
             color: #333;
             text-decoration: none;
-            
+
             &:hover {
               text-decoration: underline;
             }
           }
         }
       }
-      
+
       p {
         font-size: 14px;
         line-height: 1.5;
         margin-bottom: 10px;
         color: #555;
       }
-      
+
       ul.contact-info {
         list-style: none;
         margin: 0;
         padding: 0;
-        
+
         li {
           display: flex;
           align-items: center;
           margin-bottom: 5px;
-          
+
           svg {
             margin-right: 5px;
           }
@@ -71,28 +74,35 @@ footer {
       }
     }
   }
+  .bottomfooter{
+    justify-content: center;
+    align-items: center;
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      @media only screen and (max-width: 768px) {
+        padding-left: 25%;
+      }
+    }
   
-  img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+    p.copy {
+      font-size: 14px;
+      text-align: center;
+      @media only screen and (max-width: 768px) {
+        padding: 0px;
+      }
+    }
   }
   
-  p.copy {
-    font-size: 14px;
-    text-align: center;
-    margin: 0;
-    padding-top: 70px;
-    padding-left: 50%;
-  }
-  
+
   @media (max-width: $breakpoint-tablet) {
     .row {
       .column {
         flex-basis: 50%;
       }
     }
-    
+
     img {
       margin-bottom: 20px;
     }

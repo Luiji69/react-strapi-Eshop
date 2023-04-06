@@ -1,62 +1,74 @@
-.profile_page_card {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  
 
- 
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .ant-form-item {
-    margin-bottom: 15px;
-    @media (min-width: 768px) {
-      
-    }
-  }
-
-  .ant-row {
-    width: 100%;
+  .profile_page_card {
     display: flex;
-    flex-wrap: wrap;
-    .ant-col {
-      width: 100%;
-      padding: 0 10px;
-      .adresse{
-        width: 208%;
-      }
-
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    margin: 20px;
+    padding: 20px;
+    
+  
+   
+  
+    .ant-form-item {
+      margin-bottom: 15px;
       @media (min-width: 768px) {
-        width: 50%;
+        
       }
     }
-
-    &:last-child {
+  
+    .ant-row {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
       .ant-col {
         width: 100%;
+        padding: 0 10px;
+        .adresse{
+          width: 208%;
+        }
+  
+        @media (min-width: 768px) {
+          width: 50%;
+        }
+      }
+  
+      &:last-child {
+        .ant-col {
+          width: 100%;
+        }
+      }
+    }
+  
+    .profile_save_btn {
+      margin: 20px;
+      
+      width: 90%;
+      background-color: #68944f;
+      color: #ffffff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        background-color: darken(#ffffff, 10%);
+        color: #68944f;
+  
+        .spin {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          color: #ffffff;
+          background-color: #ffffff;
+        }
       }
     }
   }
+  
 
-  .profile_save_btn {
-    margin: 20px;
-    
-    width: 90%;
-    background-color: #68944f;
-    color: #ffffff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    &:hover,
-    &:focus {
-      background-color: darken(#ffffff, 10%);
-      color: #68944f;
-
-      .spin {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        color: #ffffff;
-        background-color: #ffffff;
-      }
-    }
-  }
 }

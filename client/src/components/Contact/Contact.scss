@@ -1,36 +1,64 @@
 .contact{
-    background-color: #68944f;
-    color: white;
-    padding: 15px;
+  background-color: #68944f;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  
+  .wrapper{
+    width: 50%;
     display: flex;
-    justify-content: center;
-  
-    .wrapper{
-      width: 50%;
+    align-items: center;
+    justify-content: space-between;
+    
+    input{
+      padding: 10px;
+      border: none;
+      border-radius: 5px 0 0  5px;
+      width: 60%;
+      max-width: 300px;
+    }
+    
+    button{
+      padding: 10px;
+      color: white;
+      background: #333;
+      border-radius: 0 5px 5px 0;
+      border: none;
+      width: 40%;
+      max-width: 200px;
+      font-size: 0.9rem;
+    }
+    
+    .icons{
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-  
-      input{
-        padding: 10px;
-        border: none;
-        border-radius: 5px 0 0  5px;
-      }
-  
-      button{
-        padding: 10px;
+      gap: 10px;
+      svg{
         color: white;
-        background: #333;
-        border-radius: 0 5px 5px 0;
-        border: none;
-      }
-  
-      .icons{
-        display: flex;
-        gap: 10px;
-        svg{
-          color: white;
-        }
+        font-size: 1.2rem;
       }
     }
   }
+  
+  @media only screen and (max-width: 768px){
+    .wrapper{
+      flex-direction: column;
+      align-items: center;
+      
+      input{
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      
+      button{
+        width: 100%;
+        max-width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

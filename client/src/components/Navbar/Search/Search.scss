@@ -18,12 +18,12 @@
   }
   .search-modal {
     position: fixed;
-    width: 60%;
+    width: 50%;
     height: 40%;
     z-index: 999;
     top: 15%;
     border-radius: 10px;
-    left: 20%;
+    left: 25%;
     background-color: white;
     transform: translateY(100%);
     animation: slideSearchWindow 0.5s ease forwards;

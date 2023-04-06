@@ -16,6 +16,8 @@ import { API } from '../../constant';
 import { useState } from 'react';
 import { getToken } from '../../helpers';
 import './Profile.scss';
+import SignIn from '../../pages/SignIn/SignIn';
+
 
 const { Title } = Typography;
 const provinceData = [
@@ -450,210 +452,222 @@ const Profile = () => {
   }
 
   return (
-    <Card className="profile_page_card">
-      <Row>
-        <Title>Edit your profile</Title>
-      </Row>
-      <Form
-        layout="vertical"
-        initialValues={{
-          username: user?.username,
-          email: user?.email,
-          Phone: user?.Phone,
-          Additional_phone: user?.Additional_phone,
-          Adresse: user?.Adresse,
-          Region: user?.Region,
-          Name: user?.Name,
-          City: user?.City,
-          last_name: user?.last_name,
-        }}
-        onFinish={handleProfileUpdate}
-      >
+    
+      <>
+      { user ? (
+        <div className="wrapper">
+        <Card className="profile_page_card">
         <Row>
-          <Col>
-          <Title level={4}>Personal informations</Title>
-          </Col>
+          <Title>Edit your profile</Title>
         </Row>
-        <Row>
-          <Col>
-            <Form.Item
-              label="Username"
-              name="username"
-              rules={[
-                {
-                  message: 'Username is required!',
-                  type: 'string',
-                },
-              ]}
-            >
-              <Input placeholder="Username" disabled />
-            </Form.Item>
-          </Col>
-          <Col>
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                {
-                  message: 'Email is required!',
-                  type: 'email',
-                },
-              ]}
-            >
-              <Input placeholder="Email" disabled />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form.Item
-              label="Name"
-              name="Name"
-              rules={[
-                {
-                  required: true,
-                  message: 'Name is required!',
-                  type: 'string',
-                },
-              ]}
-            >
-              <Input placeholder="Name" />
-            </Form.Item>
-          </Col>
-          <Col>
-            <Form.Item
-              label="last name"
-              name="last_name"
-              rules={[
-                {
-                  required: true,
-                  type: 'string',
-                  message: 'Last name is required!',
-                },
-              ]}
-            >
-              <Input placeholder="last_name" rows={6} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Title level={4}>Delivery information</Title>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form.Item
-              label="Phone number"
-              name="Phone"
-              rules={[
-                {
-                  required: true,
-                  message: 'Phone number required!',
-                  type: 'string',
-                },
-              ]}
-            >
-              <Input placeholder="Phone" maxLength={8} prefix="+216" />
-            </Form.Item>
-          </Col>
-          <Col>
-            <Form.Item
-              label="Additional phone"
-              name="Additional_phone"
-              rules={[
-                {
-                  type: 'string',
-                },
-              ]}
-            >
-              <Input
-                placeholder="Additional_phone"
-                maxLength={8}
-                prefix="+216"
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form.Item
-              label="Region"
-              name="Region"
-              rules={[
-                {
-                  required: true,
-                  type: 'string',
-                },
-              ]}
-            >
-              <Select
-                initialvalues={provinceData[0]}
-                onChange={handleProvinceChange}
-                options={provinceData.map((province) => ({
-                  label: province,
-                  value: province,
-                }))}
-              />
-            </Form.Item>
-          </Col>
-          <Col>
-            <Form.Item
-              label="City"
-              name="City"
-              rules={[
-                {
-                  required: true,
-                  type: 'string',
-                },
-              ]}
-            >
-              <Select
-                value={secondCity}
-                onChange={onSecondCityChange}
-                options={cities.map((city) => ({ label: city, value: city }))}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form.Item
-            className='adresse'
-              label="Adresse"
-              name="Adresse"
-              rules={[
-                {
-                  required: true,
-                  message: 'Adresse is required!',
-                  type: 'string',
-                },
-              ]}
-            >
-              <Input placeholder="Adresse" />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-        <Col>
-        <Button
-          className="profile_save_btn"
-          htmlType="submit"
-          type="string"
-          size="large"
+        <Form
+          layout="vertical"
+          initialValues={{
+            username: user?.username,
+            email: user?.email,
+            Phone: user?.Phone,
+            Additional_phone: user?.Additional_phone,
+            Adresse: user?.Adresse,
+            Region: user?.Region,
+            Name: user?.Name,
+            City: user?.City,
+            last_name: user?.last_name,
+          }}
+          onFinish={handleProfileUpdate}
         >
-          {loading ? (
-            <>
-              <Spin size="small" /> Saving
-            </>
-          ) : (
-            'Save'
-          )}
-        </Button>
-        </Col>
-        </Row>
-      </Form>
-    </Card>
+          <Row>
+            <Col>
+            <Title level={4}>Personal informations</Title>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Item
+                label="Username"
+                name="username"
+                rules={[
+                  {
+                    message: 'Username is required!',
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Input placeholder="Username" disabled />
+              </Form.Item>
+            </Col>
+            <Col>
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                  {
+                    message: 'Email is required!',
+                    type: 'email',
+                  },
+                ]}
+              >
+                <Input placeholder="Email" disabled />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Item
+                label="Name"
+                name="Name"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Name is required!',
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Input placeholder="Name" />
+              </Form.Item>
+            </Col>
+            <Col>
+              <Form.Item
+                label="last name"
+                name="last_name"
+                rules={[
+                  {
+                    required: true,
+                    type: 'string',
+                    message: 'Last name is required!',
+                  },
+                ]}
+              >
+                <Input placeholder="last_name" rows={6} />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Title level={4}>Delivery information</Title>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Item
+                label="Phone number"
+                name="Phone"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Phone number required!',
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Input placeholder="Phone" maxLength={8} prefix="+216" />
+              </Form.Item>
+            </Col>
+            <Col>
+              <Form.Item
+                label="Additional phone"
+                name="Additional_phone"
+                rules={[
+                  {
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="Additional_phone"
+                  maxLength={8}
+                  prefix="+216"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Item
+                label="Region"
+                name="Region"
+                rules={[
+                  {
+                    required: true,
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Select
+                  initialvalues={provinceData[0]}
+                  onChange={handleProvinceChange}
+                  options={provinceData.map((province) => ({
+                    label: province,
+                    value: province,
+                  }))}
+                />
+              </Form.Item>
+            </Col>
+            <Col>
+              <Form.Item
+                label="City"
+                name="City"
+                rules={[
+                  {
+                    required: true,
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Select
+                  value={secondCity}
+                  onChange={onSecondCityChange}
+                  options={cities.map((city) => ({ label: city, value: city }))}
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Item
+              className='adresse'
+                label="Adresse"
+                name="Adresse"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Adresse is required!',
+                    type: 'string',
+                  },
+                ]}
+              >
+                <Input placeholder="Adresse" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row>
+          <Col>
+          <Button
+            className="profile_save_btn"
+            htmlType="submit"
+            type="string"
+            size="large"
+          >
+            {loading ? (
+              <>
+                <Spin size="small" /> Saving
+              </>
+            ) : (
+              'Save'
+            )}
+          </Button>
+          </Col>
+          </Row>
+        </Form>
+      </Card>
+       </div>
+      ) : (
+        <SignIn/>
+      )}
+      </>
+      
+   
+   
   );
 };
 

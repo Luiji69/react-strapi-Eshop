@@ -54,7 +54,7 @@ const Search = ({ setShowSearch }) => {
               </div>
               <div className="prod-details">
                 <h1 className='name'>{item.attributes.title}</h1>
-                <p className='desc'>{item.attributes.desc.substring(0, 100)}...</p>
+                <p className='desc'>{item.attributes.desc.substring(0, 60)}...</p>
               </div>
             </div>
           ))}

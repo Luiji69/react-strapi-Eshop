@@ -10,17 +10,18 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
 import Profile from './components/Profile/Profile';
-import SocialCards from './components/SocialCards/SocialCards';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import CheckOut from './components/CheckOut/CheckOut';
 import ScrollToTop from 'react-scroll-to-top';
-import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
+
+
+
 
 const Layout = () => {
   return (
     <div className="app">
-      <ScrollToTop smooth color="#ffffff" style={{ background: '#68944f' }} />
+      <ScrollToTop smooth color="#ffffff" style={{ background: '#68944f', zIndex: 999 }} />
       <Navbar/>
       <Outlet />
       <ToastContainer />
@@ -63,16 +64,8 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: '/socialCards',
-        element: <SocialCards />,
-      },
-      {
         path: '/checkout',
         element: <CheckOut />,
-      },
-      {
-        path: '/privateroutes',
-        element: <PrivateRoutes />,
       },
     ],
   },

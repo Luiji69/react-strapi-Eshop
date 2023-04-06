@@ -11,7 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Search from './Search/Search';
 import { useSelector } from 'react-redux';
 import Cart from '../Cart/Cart';
-import Menu from './Menu';
+import Menu from './Menu/Menu';
 
 function Navbar() {
   const { user } = useAuthContext();

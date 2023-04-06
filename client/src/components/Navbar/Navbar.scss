@@ -13,6 +13,9 @@
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
   }
 
   .navbar__left {
@@ -58,57 +61,51 @@
     gap: 1rem;
 
     .navbar__search {
+      display: flex;
+      align-items: center;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      padding: 0.5rem;
+      margin-left: -200px;
+      @media (max-width: 768px) {
         display: flex;
-        align-items: center;
-        background-color: #f2f2f2;
-        border-radius: 5px;
-        padding: 0.5rem;
-        margin-left: -200px;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        margin-left: -100px;
+        margin-bottom: 23px;
+      }
+      .navbar__searchIcon {
+        color: #676767;
+        font-size: 1.25rem;
+      }
+      .navbar__searchInput {
+        border: none;
+        background-color: transparent;
+        margin-left: 0.5rem;
+        font-size: 1rem;
+        width: 250px;
+
+        &:focus {
+          outline: none;
+        }
+
         @media (max-width: 768px) {
-          display: flex;
-          justify-content: center;
-          position: absolute;
-          bottom: 0;
-          margin-left: -100px;
-          margin-bottom: 23px;
- 
-        }
-        .navbar__searchIcon {
-          color: #676767;
-          font-size: 1.25rem;
-        }
-        .navbar__searchInput {
-          border: none;
-          background-color: transparent;
-          margin-left: 0.5rem;
-          font-size: 1rem;
-          width: 250px;
-      
-          &:focus {
-            outline: none;
-          }
-      
-          @media (max-width: 768px) {
-            width: 85px;
-            font-size: 0.5rem;
-          }
+          width: 85px;
+          font-size: 0.5rem;
         }
       }
-      
-      
-
+    }
   }
   .navbar__right {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-right: 20px;
-    
 
     .icons {
       display: flex;
       align-items: center;
-
 
       .carticon {
         display: flex;
@@ -116,10 +113,10 @@
         position: relative;
         cursor: pointer;
         @media (max-width: 768px) {
-            position: absolute;
-            right: 0;
-            margin-right: 100px;
-            margin-bottom: 16px;
+          position: absolute;
+          right: 0;
+          margin-right: 100px;
+          margin-bottom: 16px;
         }
 
         .navbar__cartIcon {
