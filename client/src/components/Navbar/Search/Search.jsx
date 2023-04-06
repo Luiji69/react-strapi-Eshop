@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MdClose } from 'react-icons/md';
+import CloseIcon from '@mui/icons-material/Close';
 import './Search.scss';
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,9 @@ const Search = ({ setShowSearch }) => {
     data = null;
   }
   return (
-    <div className="search-modal">
+    <div className="cartpanel">
+      <div className="opctlayer" onClick={() => setShowSearch(false)}></div>
+      <div className="search-modal">
       <div className="form-field">
         <input
           autoFocus
@@ -29,8 +31,9 @@ const Search = ({ setShowSearch }) => {
           value={query}
           onChange={onChange}
         />
-        <MdClose className="close-btn" onClick={() => setShowSearch(false)} />
+        <CloseIcon className="close-btn" onClick={() => setShowSearch(false)} />
       </div>
+      <div className="scrol">
       <div className="search-result-content">
         <div className="search-results">
           {data?.map((item) => (
@@ -50,14 +53,17 @@ const Search = ({ setShowSearch }) => {
                 />
               </div>
               <div className="prod-details">
-                <h1>{item.attributes.title}</h1>
-                <p>{item.attributes.desc.substring(0, 100)}...</p>
+                <h1 className='name'>{item.attributes.title}</h1>
+                <p className='desc'>{item.attributes.desc.substring(0, 100)}...</p>
               </div>
             </div>
           ))}
         </div>
       </div>
+      </div>
     </div>
+    </div>
+    
   );
 };
 

@@ -3,8 +3,9 @@ import './Cart.scss';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, resetCart, updateQuantity } from '../../redux/cartReducer';
-import { Link } from 'react-router-dom';
-import { MdClose } from 'react-icons/md';
+import Button from '@mui/material/Button';
+import CloseIcon from '@mui/icons-material/Close';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 
 const Cart = ({setOpenCart}) => {
   const products = useSelector((state) => state.cart.products);
@@ -24,9 +25,10 @@ const Cart = ({setOpenCart}) => {
       <div className="opctlayer" onClick={() => setOpenCart(false)}></div>
       <div className="cart">
       <h1>Your cart</h1>
-      <MdClose className="close-btn" onClick={() => setOpenCart(false)} />
+      <CloseIcon className="close-btn" onClick={() => setOpenCart(false)} />
       <div className="scrol">
-        {products?.map((item) => (
+        {products?.length > 0 ? (
+        products?.map((item) => (
           <div className="item" key={item.id}>
             <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
             <div className="details">
@@ -58,18 +60,27 @@ const Cart = ({setOpenCart}) => {
               onClick={() => dispatch(removeItem(item.id))}
             />
           </div>
-        ))}
+        ))
+        ) : (
+          <>
+          <div className="empty">
+          <ProductionQuantityLimitsIcon className='cls_empty'/>
+          <p>Your cart is empty</p>
+          </div>
+          
+          </>
+      )}
       </div>
       <div className="total">
         <span>SUBTOTAL</span>
         <span>{totalPrice()} د.ت</span>
       </div>
-      <Link to="/checkout">
-        <button>PROCEED TO CHECKOUT</button>
-      </Link>
+      <div className="btnn">
+      <Button className='cart__button' variant="contained" href="/checkout">PROCEED TO CHECKOUT</Button>
       <span className="reset" onClick={() => dispatch(resetCart())}>
         Reset Cart
       </span>
+      </div>
     </div>
     </div>
     
