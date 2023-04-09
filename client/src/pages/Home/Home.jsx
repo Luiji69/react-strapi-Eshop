@@ -5,6 +5,7 @@ import Sslider from '../../components/Slider/Sslider';
 import HowItWorks from '../../components/HowItWorks/HowItWorks'
 import './Home.scss';
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
+import CategoriesSlider from '../../components/CategoriesSlider/CategoriesSlider';
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       </div>
       <FeaturedProducts type="featured" />
       <HowItWorks/>
+      <CategoriesSlider />
       <FeaturedProducts type="trending" />
       <Contact />
     </div>
