@@ -9,6 +9,8 @@
   transform: translateX(-100%);
   animation: slideMenuWindow 0.5s ease forwards;
   display: inline-block;
+  overflow-y: auto;
+  
 
   .close-btn {
     position: absolute;

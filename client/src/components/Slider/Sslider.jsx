@@ -6,15 +6,15 @@ class Gallery extends React.Component {
     render() {
         return (
             <div>
-                <Carousel autoPlay autoFocus interval="4000" showStatus={false} autoplay={true} transitionTime="4000" infiniteLoop>
+                <Carousel  autoFocus autoPlay interval="4000" showStatus={false} autoplay={true} transitionTime="4000" infiniteLoop>
                     <div>
-                        <img src='/img/ms1.png' alt="" />
+                        <img src='/img/ms5.png' alt="" />
                     </div>
                     <div>
                         <img src='/img/Grun1.png' alt="" />
                     </div>
                     <div>
-                        <img src='/img/yoa1.png' alt="" />
+                        <img src='/img/test3.png' alt="" />
                     </div>
                   
                 </Carousel>

@@ -1,0 +1,46 @@
+.side-navbar {
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+  
+  .category-list {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #f2f2f2;
+
+    .category-subheader {
+      margin-top: -100px;
+    }
+
+    .category-item {
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+
+      .category-button {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:hover {
+          background-color: #e0e0e000;
+        }
+
+        .category-title {
+          &:hover {
+            color: #579e3b;
+          }
+        }
+
+        .MuiListItemIcon-root {
+          min-width: 30px;
+        }
+      }
+    }
+  }
+}
