@@ -538,7 +538,7 @@ const CheckOut = () => {
         <div className="wrapper">
           <Card className="profile_page_card">
             <Row>
-              <Title>Edit your profile</Title>
+              <Title>Order information</Title>
             </Row>
             <Form
               layout="vertical"

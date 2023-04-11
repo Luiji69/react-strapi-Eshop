@@ -40,8 +40,8 @@ const CategoriesSlider = () => {
     slideShadows: true,
   }}
 >
-        {loading && <p>Loading categories...</p>}
-        {error && <p>Error fetching categories: {error.message}</p>}
+        {loading && <p>Loading...</p>}
+        {error && <p>Something went wrong! {error.message}</p>}
         {data &&
           data.map((category) => (
             <SwiperSlide

@@ -1,5 +1,83 @@
-.list{
+.list_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  .list_header {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+
+    .sort {
+      display: flex;
+      align-items: center;
+
+      label {
+        margin-right: 1rem;
+      }
+
+      select {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        color: #333;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          border-color: #666;
+        }
+      }
+    }
   }
+
+  .card_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+
+    .pagination_button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      margin: 0 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      background-color: #fff;
+      color: #333;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        border-color: #666;
+      }
+
+      &.active {
+        background-color: #333;
+        color: #fff;
+        border-color: #333;
+      }
+    }
+  }
+}

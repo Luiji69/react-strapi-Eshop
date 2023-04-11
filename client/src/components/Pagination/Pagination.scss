@@ -1,0 +1,31 @@
+.MuiPagination-root {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    
+  
+    .MuiPagination-ul {
+      display: flex;
+      list-style: none;
+  
+      .MuiPaginationItem-root {
+        border-radius: 0.2rem;
+        margin: 0 0.2rem;
+  
+        &.Mui-selected {
+          background-color: #0077c2;
+          color: #fff;
+        }
+  
+        &:hover {
+          background-color: rgba(0, 119, 194, 0.1);
+        }
+      }
+    }
+  
+    .Mui-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+  

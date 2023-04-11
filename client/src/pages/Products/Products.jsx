@@ -1,10 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import useFetch from "../../components/hooks/useFetch";
-import List from "../../components/List/List";
+import React from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import useFetch from '../../components/hooks/useFetch';
+import List from '../../components/List/List';
 
-import "./Products.scss";
+import './Products.scss';
 
 const Products = () => {
   const catId = parseInt(useParams().id);
@@ -24,11 +24,12 @@ const Products = () => {
         : selectedSubCats.filter((item) => item !== value)
     );
   };
+
   return (
     <div className="products">
       <div className="left">
         <div className="filterItem">
-          <h2>Product Categories</h2>
+          <h2>Sub-Categories</h2>
           {data?.map((item) => (
             <div className="inputItem" key={item.id}>
               <input
@@ -41,15 +42,10 @@ const Products = () => {
             </div>
           ))}
         </div>
-    
       </div>
       <div className="right">
-        <img
-          className="catImg"
-          src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt=""
-        />
-        <List catId={catId} subCats={selectedSubCats}/>
+        
+        <List catId={catId} subCats={selectedSubCats} />
       </div>
     </div>
   );
