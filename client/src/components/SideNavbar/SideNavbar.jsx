@@ -30,8 +30,8 @@ const SideNavbar = () => {
   };
   return (
     <Box className="side-navbar">
-      {error && <div className="error">Error fetching categories.</div>}
-      {loading && <div className="loading">Loading categories...</div>}
+      {error && <div className="error">Something went wrong!</div>}
+      {loading && <div className="loading">Loading...</div>}
       {data && (
         <List
           className="category-list"

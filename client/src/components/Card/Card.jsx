@@ -17,7 +17,8 @@ const Card = ({ item }) => {
             alt=""
             className="mainImg"
           />
-          <img
+          {item.attributes?.img2?.data?.attributes?.url && (
+            <img
             src={
               process.env.REACT_APP_UPLOAD_URL +
               item.attributes?.img2?.data?.attributes?.url
@@ -25,6 +26,8 @@ const Card = ({ item }) => {
             alt=""
             className="secondImg"
           />
+          )}
+          
         </div>
         <h2>{item?.attributes.title}</h2>
         <div className="prices">

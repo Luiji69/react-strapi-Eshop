@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuthContext } from '../../../context/AuthContext';
 import Button from '@mui/material/Button';
 import { removeToken } from '../../../helpers';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Menu.scss';
 import CloseIcon from '@mui/icons-material/Close';
 import logo from '../../../assets/logo.png';
@@ -29,7 +29,6 @@ const Menu = ({ setShowMenu }) => {
     navigate('/', { replace: true });
     window.location.reload();
   };
-  const naviCat = useNavigate();
   const { data, loading, error } = useFetch('/categories?populate=*');
   const [expanded, setExpanded] = useState(false); // State to control collapse
 
@@ -43,82 +42,80 @@ const Menu = ({ setShowMenu }) => {
   return (
     <div className="menu">
       <div className="top">
-      <Link to="/" onClick={() => setShowMenu(false)}>
+        <Link to="/" onClick={() => setShowMenu(false)}>
           <img src={logo} alt="Logo" className="navbar__logo" />
         </Link>
-      <CloseIcon className="close-btn" onClick={() => setShowMenu(false)} />
+        <CloseIcon className="close-btn" onClick={() => setShowMenu(false)} />
       </div>
       <div className="Bottom">
         <a href="/" className="navbar__link">
           Home
         </a>
-        
-        <a href="/" className="navbar__link">
-          About
+
+        <a href="/becomeaseller" className="navbar__link">
+          Become a Seller
         </a>
         <a href="/Contact" className="navbar__link">
           Contact
         </a>
 
-        <Box >
-      {error && <div>Error fetching categories.</div>}
-      {loading && <div>Loading categories...</div>}
-      {data && (
-        <List
-          
-          subheader={
-            <ListSubheader component="div" >
-              Categories
-            </ListSubheader>
-          }
-        >
-          <Divider />
-          {data.slice(0, 5).map((category) => (
-            <ListItem key={category.id} onClick={() => setShowMenu(false)} >
-              <ListItemButton
-                
-                onClick={() => handleCategoryClick(category.id)}
-              >
-                <ListItemIcon>
-                  <NavigateNextIcon />
-                </ListItemIcon>
-                <ListItemText  primary={category.attributes.title} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-          {data.length > 5 && ( // Only show collapse if there are more than 5 categories
-            <div>
+        <Box>
+          {error && <div>Error fetching categories.</div>}
+          {loading && <div>Loading categories...</div>}
+          {data && (
+            <List
+              subheader={
+                <ListSubheader component="div">Categories</ListSubheader>
+              }
+            >
               <Divider />
-              <ListItemButton onClick={handleExpandClick}>
-                <Typography variant="body1">
-                  Show {expanded ? 'less' : 'more'}
-                </Typography>
-                {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-              </ListItemButton>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  {data.slice(5).map((category) => (
-                    <ListItem key={category.id} onClick={() => setShowMenu(false)}>
-                      <ListItemButton
-                        
-                        onClick={() => handleCategoryClick(category.id)}
-                      >
-                        <ListItemIcon>
-                          <NavigateNextIcon />
-                        </ListItemIcon>
-                        <ListItemText  primary={category.attributes.title} />
-                      </ListItemButton>
-                    </ListItem>
-                  ))}
-                </List>
-              </Collapse>
-            </div>
+              {data.slice(0, 5).map((category) => (
+                <ListItem key={category.id} onClick={() => setShowMenu(false)}>
+                  <ListItemButton
+                    onClick={() => handleCategoryClick(category.id)}
+                  >
+                    <ListItemIcon>
+                      <NavigateNextIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={category.attributes.title} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+              {data.length > 5 && ( // Only show collapse if there are more than 5 categories
+                <div>
+                  <Divider />
+                  <ListItemButton onClick={handleExpandClick}>
+                    <Typography variant="body1">
+                      Show {expanded ? 'less' : 'more'}
+                    </Typography>
+                    {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                  </ListItemButton>
+                  <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                      {data.slice(5).map((category) => (
+                        <ListItem
+                          key={category.id}
+                          onClick={() => setShowMenu(false)}
+                        >
+                          <ListItemButton
+                            onClick={() => handleCategoryClick(category.id)}
+                          >
+                            <ListItemIcon>
+                              <NavigateNextIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={category.attributes.title} />
+                          </ListItemButton>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Collapse>
+                </div>
+              )}
+              <Divider />
+            </List>
           )}
-          <Divider />
-        </List>
-      )}
-    </Box>
-        
+        </Box>
+
         <div className="auth_btn">
           {user ? (
             <>

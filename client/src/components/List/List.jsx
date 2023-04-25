@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './List.scss';
 import Card from '../Card/Card';
-import useFetchTotal from '../../components/hooks/useFetchTotal';
+import useFetchTotal from '../hooks/useFetchTotal';
 import PaginationC from '../Pagination/Pagination';
 
 import InputLabel from '@mui/material/InputLabel';

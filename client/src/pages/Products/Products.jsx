@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../../components/hooks/useFetch';
-import List from '../../components/List/List';
+import List from '../../components/List/List'
 
 import './Products.scss';
 
@@ -44,7 +44,6 @@ const Products = () => {
         </div>
       </div>
       <div className="right">
-        
         <List catId={catId} subCats={selectedSubCats} />
       </div>
     </div>

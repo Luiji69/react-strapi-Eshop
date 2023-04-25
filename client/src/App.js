@@ -12,8 +12,13 @@ import React from 'react';
 import Profile from './components/Profile/Profile';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
-import CheckOut from './components/CheckOut/CheckOut';
+import Seller from './pages/Seller/Seller';
+import CartDetails from './components/CheckOut/CartDetails';
+import CartSummary from './components/CheckOut/CartSummary';
 import ScrollToTop from 'react-scroll-to-top';
+import OrderSuccess from './components/CheckOut/OrderSuccess';
+import OrderDetail from './components/CheckOut/OrderDetail';
+import UserOrders from './components/UserOrders/UserOrders';
 
 
 
@@ -64,10 +69,31 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: '/checkout',
-        element: <CheckOut />,
+        path: '/cartdetails',
+        element: <CartDetails />,
+      },
+      {
+        path: '/cartsummary',
+        element: <CartSummary />,
+      },
+      {
+        path: '/ordersuccess',
+        element: <OrderSuccess />,
+      },
+      {
+        path: '/orderdetail/:id',
+        element: <OrderDetail />,
+      },
+      {
+        path: '/becomeaseller',
+        element: <Seller />,
+      },
+      {
+        path: '/userorders',
+        element: <UserOrders />,
       },
     ],
+    
   },
 ]);
 

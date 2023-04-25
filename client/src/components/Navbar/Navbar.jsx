@@ -35,8 +35,8 @@ function Navbar() {
           <a href="/" className="navbar__link">
             Home
           </a>
-          <a href="/" className="navbar__link">
-            About
+          <a href="/becomeaseller" className="navbar__link">
+            Become a Seller
           </a>
           <a href="/Contact" className="navbar__link">
             Contact
@@ -65,8 +65,6 @@ function Navbar() {
             <ShoppingCartOutlinedIcon className="navbar__cartIcon" />
             <span>{products.length}</span>
           </div>
-
-         
         </div>
         <div className="authbtn">
           {user ? (
@@ -106,7 +104,10 @@ function Navbar() {
           )}
         </div>
 
-        <MenuIcon className="navbar__menuIcon" onClick={() => setShowMenu(true)}/>
+        <MenuIcon
+          className="navbar__menuIcon"
+          onClick={() => setShowMenu(true)}
+        />
         {showMenu && <Menu setShowMenu={setShowMenu} />}
       </div>
     </nav>

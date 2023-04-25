@@ -4,18 +4,65 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "email": {
+    "total_price": {
+      "type": "decimal"
+    },
+    "u_name": {
+      "type": "string"
+    },
+    "u_lastname": {
+      "type": "string"
+    },
+    "u_phone": {
+      "type": "biginteger"
+    },
+    "u_additionalphone": {
+      "type": "biginteger"
+    },
+    "u_adresse": {
+      "type": "string"
+    },
+    "u_city": {
+      "type": "string"
+    },
+    "u_region": {
       "type": "string"
     },
     "products": {
       "type": "json"
+    },
+    "u_email": {
+      "type": "string"
+    },
+    "total_items": {
+      "type": "decimal"
+    },
+    "delivery_cost": {
+      "type": "integer"
+    },
+    "Order_Status": {
+      "type": "enumeration",
+      "enum": [
+        "On Hold",
+        "Confirmed",
+        "On Delivery",
+        "Finished"
+      ],
+      "default": "On Hold"
+    },
+    "u_id": {
+      "type": "biginteger"
+    },
+    "uid": {
+      "type": "uid"
     }
   }
 }

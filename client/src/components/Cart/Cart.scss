@@ -101,23 +101,21 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        .price {
+          color: #68944f;
+        }
         .cart__button {
           border: none;
-          font-size: 1.2rem;
+         
           cursor: pointer;
-          height: 30px;
-          border-radius: 5px;
-          transition: background-color 0.2s ease;
-          background-color: #68944f;
-          color: #fff;
+          transition: color 0.2s ease;
+          
+          color: #68944f;
           text-transform: capitalize;
 
           &:hover {
-            background-color: #579e3b;
+           color: #579e3b;
           }
-        }
-        span {
-          font-weight: 600;
         }
       }
 
