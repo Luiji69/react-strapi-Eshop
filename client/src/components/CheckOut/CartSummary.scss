@@ -3,6 +3,10 @@
   gap: 20px;
   padding: 50px;
   background-color: #f5f5f5;
+  @media only screen and (max-width: 768px) {
+    display: block;
+    padding: 10px;
+  }
 
   .left {
     width: 70%;
@@ -23,7 +27,6 @@
 
         .th-title {
           font-size: 14px;
-          
         }
         .th-icon {
           color: #68944f;
@@ -128,6 +131,7 @@
               @media only screen and (max-width: 768px) {
                 width: 70px;
                 height: 80px;
+                margin-left: 0;
               }
 
               img {
@@ -166,6 +170,7 @@
       border-radius: 10px;
       padding: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
 
       .bottomsumm-header {
         display: flex;
@@ -216,13 +221,8 @@
         align-items: center;
         width: 100%;
         border-bottom: 1px solid #e3e3e3;
-        h1 {
-          font-size: 20px;
-          font-weight: bold;
-          margin-bottom: 10px;
-          margin-top: 20px;
-          width: 100%;
-          text-align: center;
+        .th-title {
+          font-size: 14px;
         }
       }
       .total-content {
@@ -237,21 +237,14 @@
           width: 100%;
 
           .first {
-            font-size: 18px;
+            font-size: 13px;
             font-weight: 400;
             margin: 10px;
           }
           .second {
-            font-size: 18px;
+            font-size: 13px;
             font-weight: 400;
             margin: 10px;
-          }
-          p {
-            color: #bebebe;
-            margin-bottom: 20px;
-            margin-left: 20px;
-            margin-right: px;
-            font-size: 16px;
           }
         }
       }

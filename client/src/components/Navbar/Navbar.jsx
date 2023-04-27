@@ -12,6 +12,8 @@ import Search from './Search/Search';
 import { useSelector } from 'react-redux';
 import Cart from '../Cart/Cart';
 import Menu from './Menu/Menu';
+import Dropdown from './Dropdown/Dropdown';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function Navbar() {
   const { user } = useAuthContext();
@@ -19,12 +21,14 @@ function Navbar() {
   const [openCart, setOpenCart] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const products = useSelector((state) => state.cart.products);
   const handleLogout = () => {
     removeToken();
     navigate('/', { replace: true });
     window.location.reload();
   };
+  
   return (
     <nav className="navbar">
       <div className="navbar__left">
@@ -72,10 +76,12 @@ function Navbar() {
               <Button
                 variant="text"
                 className="navbar__button--text"
-                href="/profile"
+                onClick={() => setShowDropdown(true)}
               >
                 {user.username}
+                <ExpandMoreIcon/>
               </Button>
+              
               <Button
                 variant="contained"
                 className="navbar__button--contained"
@@ -103,6 +109,7 @@ function Navbar() {
             </>
           )}
         </div>
+        {showDropdown && <Dropdown setShowDropdown={setShowDropdown} />}
 
         <MenuIcon
           className="navbar__menuIcon"

@@ -6,6 +6,11 @@
     margin: 1rem;
     text-align: center;
     width: 100%;
+    @media screen and (max-width: 767px) {
+          margin: 0;
+          margin-bottom: 1rem;
+    }
+    
   
     .os-wrapper {
       display: flex;
@@ -16,6 +21,11 @@
       border-radius: 10px;
       margin-top: 40px;
       width: 60%;
+      @media screen and (max-width: 767px) {
+          width: 80%;
+          align-self: center;
+      }
+      
   
       .os-header {
         display: flex;

@@ -15,35 +15,33 @@
     "owner_name": {
       "type": "string"
     },
-    "company_email": {
-      "type": "email"
-    },
     "company_name": {
       "type": "string"
     },
-    "owner_phone": {
-      "type": "biginteger"
-    },
     "company_address": {
-      "type": "string"
-    },
-    "company_region": {
-      "type": "string"
-    },
-    "company_city": {
       "type": "string"
     },
     "owner_lastname": {
       "type": "string"
     },
-    "owner_bdd": {
-      "type": "date"
-    },
-    "owner_identifier": {
-      "type": "string"
-    },
     "rne_number": {
       "type": "string"
+    },
+    "company_email": {
+      "type": "string"
+    },
+    "owner_phone": {
+      "type": "string"
+    },
+    "id_img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

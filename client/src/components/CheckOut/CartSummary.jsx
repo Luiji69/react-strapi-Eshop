@@ -64,7 +64,6 @@ const CartSummary = () => {
         body: JSON.stringify({ data }),
       });
        data = await response.json();
-       console.log(data)
       if (data?.error) {
         throw data?.error;
       } else {
@@ -182,7 +181,7 @@ const CartSummary = () => {
       <div className="right">
         <div className="total">
           <div className="total-header">
-            <h1>Order summary</h1>
+            <h2 className='th-title'>Order summary</h2>
           </div>
           <div className="total-content">
             <div className="sub-row">

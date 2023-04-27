@@ -86,7 +86,7 @@ const SignIn = () => {
               name="basic"
               layout="vertical"
               onFinish={onFinish}
-              autoComplete="off"
+              autoComplete="on"
             >
               <Form.Item
                 label="Email"

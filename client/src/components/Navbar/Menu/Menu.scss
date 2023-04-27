@@ -39,10 +39,14 @@
  
 
     .auth_btn {
-      display: flex;
+      display: block;
       justify-content: center;
       align-items: center;
       margin-top: 30px;
+      a{
+        text-decoration: none;
+        color: #000000;
+      }
       .navbar__button {
         border: none;
         font-size: 1rem;

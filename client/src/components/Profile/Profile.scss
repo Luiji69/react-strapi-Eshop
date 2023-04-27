@@ -3,23 +3,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   .profile_page_card {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 600px;
     margin: 20px;
     padding: 20px;
-    
-  
    
-  
     .ant-form-item {
       margin-bottom: 15px;
-      @media (min-width: 768px) {
-        
-      }
     }
   
     .ant-row {
@@ -31,6 +24,7 @@
         padding: 0 10px;
         .adresse{
           width: 208%;
+          
         }
   
         @media (min-width: 768px) {
@@ -46,8 +40,7 @@
     }
   
     .profile_save_btn {
-      margin: 20px;
-      
+      margin: 20px;     
       width: 90%;
       background-color: #68944f;
       color: #ffffff;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Button,
   Card,
@@ -18,7 +18,7 @@ import { getToken } from '../../helpers';
 import './Profile.scss';
 import SignIn from '../../pages/SignIn/SignIn';
 import { provinceData, cityData } from '../../regioncity/regioncity'
-import axios from 'axios';
+
 
 const { Title } = Typography;
 

@@ -5,6 +5,7 @@ import { removeToken } from '../../../helpers';
 import { Link, useNavigate } from 'react-router-dom';
 import './Menu.scss';
 import CloseIcon from '@mui/icons-material/Close';
+import MenuItem from '@mui/material/MenuItem';
 import logo from '../../../assets/logo.png';
 import useFetch from '../../hooks/useFetch';
 import Box from '@mui/material/Box';
@@ -122,10 +123,17 @@ const Menu = ({ setShowMenu }) => {
               <Button
                 variant="text"
                 className="navbar__button--text"
-                href="/profile"
               >
                 {user.username}
+                <ExpandMoreIcon/>
               </Button>
+              <Link to={'/profile'} onClick={() => setShowMenu(false)}>
+                <MenuItem className="menu-item"><NavigateNextIcon />Your profile</MenuItem>
+              </Link>
+              <Link to={'/userorders'} onClick={() => setShowMenu(false)}>
+                <MenuItem className="menu-item"><NavigateNextIcon />Your orders</MenuItem>
+              </Link>
+
               <Button
                 variant="contained"
                 className="navbar__button--contained"

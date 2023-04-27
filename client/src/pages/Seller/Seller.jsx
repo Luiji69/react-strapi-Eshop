@@ -1,103 +1,59 @@
 import React, { useState } from 'react';
 import './Seller.scss';
-import { API } from '../../constant';
-import { useNavigate } from 'react-router-dom';
 import useScreenSize from '../../components/hooks/useScreenSize';
-import { UploadOutlined } from '@ant-design/icons';
-import {
-  Button,
-  Card,
-  Col,
-  Form,
-  Select,
-  Alert,
-  Input,
-  Upload,
-  Row,
-  Spin,
-  DatePicker,
-} from 'antd';
-import { provinceData, cityData } from '../../regioncity/regioncity';
+import { Button, Card, Col, Form, Input, Row, Spin, Upload } from 'antd';
+import axios from 'axios';
 
 const Seller = () => {
   const [formData, setFormData] = useState({
-    owner_name: "",
-    company_email: "",
-    company_name: "",
-    owner_phone: "",
-    company_address: "",
-    company_region: "",
-    company_city: "",
-    owner_lastname: "",
-    owner_bdd: "",
-    owner_identifier: "",
-    rne_number: "",
-
+    company_name: '',
+    company_email: '',
+    owner_phone: '',
+    company_address: '',
+    owner_name: '',
+    owner_lastname: '',
+    rne_number: '',
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
-  const { isDesktopView } = useScreenSize();
-  const [cities, setCities] = useState(cityData[provinceData[0]]);
-  const [secondCity, setSecondCity] = useState(cityData[provinceData[0]][0]);
-  const handleProvinceChange = (value) => {
-    setCities(cityData[value]);
-    setSecondCity(cityData[value][0]);
-  };
-  const onSecondCityChange = (value) => {
-    setSecondCity(value);
+  const handleInputsChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  const handleSubmit  = async (event) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { isDesktopView } = useScreenSize();
+  const onSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    try {
-      const response = await fetch(`${API}/become-sellers`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    axios
+      .post('http://localhost:1337/api/become-sellers', {
+        data: {
+          company_name: formData.company_name,
+          company_email: formData.company_email,
+          owner_phone: formData.owner_phone,
+          company_address: formData.company_address,
+          owner_name: formData.owner_name,
+          owner_lastname: formData.owner_lastname,
+          rne_number: formData.rne_number,
         },
-        body: JSON.stringify(formData),
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      const data = await response.json();
-      
-      if (data?.error) {
-        throw data?.error;
-      } else {
-        navigate('/ordersuccess', { state: { data }, replace: true });
-      }
-    } catch (error) {
-      console.error(error);
-      setError(error?.message ?? 'Something went wrong!');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
   return (
     <div className="seller-container">
       <Row align="middle">
         <Col span={isDesktopView ? 8 : 24} offset={isDesktopView ? 8 : 0}>
           <Card title="Become a seller">
-          {error ? (
-                  <Alert
-                    className="alert_error"
-                    message={error}
-                    type="error"
-                    closable
-                    afterClose={() => setError('')}
-                  />
-                ) : null}
-            <Form name="basic" onSubmit={handleSubmit} autoComplete="off"
-            
-            >
+            <Form name="basic" autoComplete="on">
               <Form.Item
                 label="Company name:"
-                name="company_name"
-                value={formData.company_name}
-                onChange={handleChange}
                 rules={[
                   {
                     required: true,
@@ -105,14 +61,16 @@ const Seller = () => {
                   },
                 ]}
               >
-                <Input placeholder="Company name" />
+                <Input
+                  placeholder="Company name"
+                  name="company_name"
+                  value={formData.company_name}
+                  onChange={handleInputsChange}
+                />
               </Form.Item>
 
               <Form.Item
                 label="Company email:"
-                name="company_email"
-                value={formData.company_email}
-                onChange={handleChange}
                 rules={[
                   {
                     required: true,
@@ -120,13 +78,15 @@ const Seller = () => {
                   },
                 ]}
               >
-                <Input placeholder="Company email" />
+                <Input
+                  name="company_email"
+                  placeholder="Company email"
+                  onChange={handleInputsChange}
+                  value={formData.company_email}
+                />
               </Form.Item>
               <Form.Item
                 label="Company phone:"
-                name="owner_phone"
-                value={formData.owner_phone}
-                onChange={handleChange}
                 rules={[
                   {
                     required: true,
@@ -134,13 +94,16 @@ const Seller = () => {
                   },
                 ]}
               >
-                <Input placeholder="Company phone" prefix="+216" />
+                <Input
+                  name="owner_phone"
+                  placeholder="Company phone"
+                  prefix="+216"
+                  value={formData.company_phone}
+                  onChange={handleInputsChange}
+                />
               </Form.Item>
               <Form.Item
                 label="Company address:"
-                name="company_address"
-                value={formData.company_address}
-                onChange={handleChange}
                 rules={[
                   {
                     required: true,
@@ -148,57 +111,15 @@ const Seller = () => {
                   },
                 ]}
               >
-                <Input placeholder="Company address" />
-              </Form.Item>
-              <Form.Item
-                label="Region"
-                name="company_region"
-                value={formData.company_region}
-                onChange={handleChange}
-                rules={[
-                  {
-                    required: true,
-                    type: 'string',
-                  },
-                ]}
-              >
-                <Select
-                  initialvalues={provinceData[0]}
-                  onChange={handleProvinceChange}
-                  options={provinceData.map((province) => ({
-                    label: province,
-                    value: province,
-                  }))}
-                />
-              </Form.Item>
-
-              <Form.Item
-                label="City"
-                name="company_city"
-                value={formData.company_city}
-                onChange={handleChange}
-                rules={[
-                  {
-                    required: true,
-                    type: 'string',
-                  },
-                ]}
-              >
-                <Select
-                  style={{ width: 420 }}
-                  value={secondCity}
-                  onChange={onSecondCityChange}
-                  options={cities.map((city) => ({
-                    label: city,
-                    value: city,
-                  }))}
+                <Input
+                  name="company_address"
+                  placeholder="Company address"
+                  onChange={handleInputsChange}
+                  value={formData.company_address}
                 />
               </Form.Item>
               <Form.Item
                 label="Owner name:"
-                name="owner_name"
-                value={formData.owner_name}
-                onChange={handleChange}
                 rules={[
                   {
                     required: true,
@@ -206,62 +127,30 @@ const Seller = () => {
                   },
                 ]}
               >
-                <Input placeholder="Owner name" />
+                <Input
+                  placeholder="Owner name"
+                  name="owner_name"
+                  onChange={handleInputsChange}
+                  value={formData.owner_name}
+                />
               </Form.Item>
               <Form.Item
                 label="Owner last name:"
-                name="owner_lastname"
-                value={formData.owner_lastname}
-                onChange={handleChange}
-                rules={[
-                  {
-                    required: true,
-                    type: 'string',
-                  },
-                ]}
-              >
-                <Input placeholder="Owner last name" />
-              </Form.Item>
-              <Form.Item
-                label="Owner birth date:"
-                name="owner_bdd"
-                value={formData.owner_bdd}
-                onChange={handleChange}
                 rules={[
                   {
                     required: true,
                   },
                 ]}
               >
-                <DatePicker placeholder="01/01/2001" />
-              </Form.Item>
-              <Form.Item
-                label="Identification type"
-                name="owner_identifier"
-                value={formData.owner_identifier}
-                onChange={handleChange}
-                defaultValue="CIN"
-                rules={[
-                  {
-                    required: true,
-                    type: 'string',
-                  },
-                ]}
-              >
-                <Select
-                  defaultValue="CIN"
-                  options={[
-                    { value: 'CIN', label: 'Cin' },
-                    { value: 'Passport', label: 'Passport' },
-                  ]}
+                <Input
+                  name="owner_lastname"
+                  placeholder="Owner last name"
+                  onChange={handleInputsChange}
+                  value={formData.owner_lastname}
                 />
               </Form.Item>
-              
               <Form.Item
                 label="RNE number:"
-                name="rne_number"
-                value={formData.rne_number}
-                onChange={handleChange}
                 rules={[
                   {
                     required: true,
@@ -269,16 +158,19 @@ const Seller = () => {
                   },
                 ]}
               >
-                <Input placeholder="RNE number" />
+                <Input
+                  name="rne_number"
+                  placeholder="RNE number"
+                  onChange={handleInputsChange}
+                  value={formData.rne_number}
+                />
               </Form.Item>
-             
               <Form.Item>
                 <Button
                   style={{ background: '#68944f' }}
                   type="primary"
                   htmlType="submit"
-                  onClick={handleSubmit}
-                  
+                  onClick={onSubmit}
                 >
                   Submit {isLoading && <Spin size="small" />}
                 </Button>
