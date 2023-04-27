@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Seller.scss';
 import useScreenSize from '../../components/hooks/useScreenSize';
-import { Button, Card, Col, Form, Input, Row, Spin, Upload } from 'antd';
+import { Button, Card, Col, Form, Input, Row, Spin } from 'antd';
 import axios from 'axios';
 
 const Seller = () => {
