@@ -15,13 +15,10 @@ const OrderDetail = () => {
         );
         setData(response.data);
       } catch (error) {
-        console.log(error);
       }
     };
     fetchData();
   }, [id]);
-  console.log(data);
-
   return (
     <div className="OrderDetail">
       <div className="od-container">

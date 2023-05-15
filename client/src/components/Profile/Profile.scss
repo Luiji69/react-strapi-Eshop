@@ -24,7 +24,9 @@
         padding: 0 10px;
         .adresse{
           width: 208%;
-          
+          @media (max-width: 768px){
+            width: 100%;
+          }
         }
   
         @media (min-width: 768px) {

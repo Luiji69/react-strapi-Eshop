@@ -3,6 +3,9 @@
   @media (max-width: 768px) {
     display: none;
   }
+  @media only screen and (max-width: 1180px) and (min-width: 768px) {
+    display: none;
+  }
   
   .category-list {
     width: 100%;

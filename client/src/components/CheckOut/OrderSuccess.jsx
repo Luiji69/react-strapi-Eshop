@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom'
 const OrderSuccess = () => {
   const location = useLocation();
   const { data } = location.state || {};
-  console.log(data)
-
   return (
     <div className="os-container">
       <div className="os-wrapper">

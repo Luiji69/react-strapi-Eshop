@@ -28,6 +28,11 @@ const Products = () => {
   return (
     <div className="products">
       <div className="left">
+      {error ? (
+        'Something went wrong!'
+      ) : loading ? (
+        'loading'
+      ) : (
         <div className="filterItem">
           <h2>Sub-Categories</h2>
           {data?.map((item) => (
@@ -42,6 +47,7 @@ const Products = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
       <div className="right">
         <List catId={catId} subCats={selectedSubCats} />

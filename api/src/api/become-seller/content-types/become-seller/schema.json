@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "owner_name": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "company_name": {
       "type": "string"
@@ -30,18 +31,20 @@
     "company_email": {
       "type": "string"
     },
-    "owner_phone": {
+    "link_id_img": {
       "type": "string"
     },
-    "id_img": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "company_region": {
+      "type": "string"
+    },
+    "company_city": {
+      "type": "string"
+    },
+    "tax_identification": {
+      "type": "string"
+    },
+    "owner_phone": {
+      "type": "string"
     }
   }
 }

@@ -3,7 +3,6 @@
   flex-direction: column;
   @media (max-width: 768px) {
     padding: 10px;
-
   }
 
   .list_header {
@@ -28,6 +27,7 @@
   .card_list {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.5rem;
     justify-content: space-between;
     .card {
       margin-bottom: 20px;

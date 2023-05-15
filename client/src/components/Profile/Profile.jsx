@@ -62,7 +62,7 @@ const Profile = () => {
       setLoading(false);
     }
   };
-  const [data, setData] = useState(null);
+  
 
   
 

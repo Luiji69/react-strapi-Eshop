@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -14,11 +14,17 @@ import { API } from '../../constant';
 import './CartSummary.scss';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { resetCart } from '../../redux/cartReducer';
 
 
 
 const CartSummary = () => {
+  function handleButtonClick() {
+    dispatch(resetCart());
+    onSubmit();
+  }
   const { user } = useAuthContext();
+  const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
   const totalPrice = () => {
     let total = 0;
@@ -149,7 +155,7 @@ const CartSummary = () => {
             </Button>
           </div>
         </div>
-        <div className="bottomsum">
+        {/*<div className="bottomsum">
           <div className="bottomsumm-header">
             <h2 className="th-title">
               <LabelImportantIcon className="th-icon" fontSize="small" />
@@ -176,7 +182,7 @@ const CartSummary = () => {
               </RadioGroup>
             </FormControl>
           </div>
-        </div>
+            </div>*/}
       </div>
       <div className="right">
         <div className="total">
@@ -204,8 +210,10 @@ const CartSummary = () => {
               className="cart__button"
               variant="contained"
               type="submit"
-              onClick={onSubmit}
+              onClick={handleButtonClick}
+              
               disabled={isLoading}
+              
             >
               Proceed order {(Number(totalPrice()) + deliverycost).toFixed(2)}{' '}
               د.ت

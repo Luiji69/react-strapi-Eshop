@@ -17,7 +17,6 @@ const Product = () => {
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
   const categoryId = data?.attributes?.categories?.data[0]?.id;
-  console.log(data)
   return (
     <div className="product">
       {error ? (

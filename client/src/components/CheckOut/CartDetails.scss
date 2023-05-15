@@ -8,6 +8,11 @@
     display: block;
     padding: 10px;
   }
+  @media only screen and (max-width: 1180px) and (min-width: 768px) {
+    display: block;
+    padding: 10px;
+
+  }
 
   .left-big {
     width: 70%;
@@ -20,6 +25,9 @@
       }
     }
     @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
+    @media only screen and (max-width: 1180px) and (min-width: 768px) {
       width: 100%;
     }
   }
@@ -138,6 +146,26 @@
         align-self: center;
       }
     }
+    @media only screen and (max-width: 1180px) and (min-width: 768px) {
+      gap: 10px;
+      .left {
+        width: 20%;
+        align-self: center;
+        .image-container {
+          margin-left: 0;
+        }
+      }
+
+      .center {
+        width: 60%;
+        margin-bottom: 10px;
+      }
+
+      .right {
+        width: 20%;
+        align-self: center;
+      }
+    }
   }
 
   .empty {
@@ -164,6 +192,10 @@
     margin-top: 55px;
     @media only screen and (max-width: 768px) {
       width: 100%;
+    }
+    @media only screen and (max-width: 1180px) and (min-width: 768px) {
+      width: 80%;
+      margin-left: 10%;
     }
 
     .total {
@@ -225,7 +257,6 @@
         .cart__button {
           border: none;
           cursor: pointer;
-
           border-radius: 5px;
           transition: background-color 0.2s ease;
           background-color: #68944f;
@@ -239,6 +270,10 @@
       }
 
       @media only screen and (max-width: 768px) {
+        font-size: 16px;
+        font-weight: 300;
+      }
+      @media only screen and (max-width: 1180px) and (min-width: 768px) {
         font-size: 16px;
         font-weight: 300;
       }

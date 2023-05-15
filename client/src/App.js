@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Seller from './pages/Seller/Seller';
+import SellerSuccess from './pages/Seller/SellerSuccess';
 import CartDetails from './components/CheckOut/CartDetails';
 import CartSummary from './components/CheckOut/CartSummary';
 import ScrollToTop from 'react-scroll-to-top';
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: '/userorders',
         element: <UserOrders />,
+      },
+      {
+        path: '/sellersuccess',
+        element: <SellerSuccess />,
       },
     ],
     

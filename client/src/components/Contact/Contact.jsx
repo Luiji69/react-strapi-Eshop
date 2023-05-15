@@ -3,10 +3,13 @@ import axios from "axios";
 import "./Contact.scss";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { Alert } from "@mui/material";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -14,18 +17,18 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:1337/api/newsletters", {
-      data:{
-        email: email,
-      },
-      
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    axios
+      .post("http://localhost:1337/api/newsletters", {
+        data: {
+          email: email,
+        },
+      })
+      .then((response) => {
+        setSuccess(true);
+      })
+      .catch((error) => {
+        setError(true)
+      });
   };
 
   return (
@@ -55,6 +58,18 @@ const Contact = () => {
             <LinkedInIcon />
           </a>
         </div>
+      </div>
+      <div className="message">
+      {success && (
+          <Alert severity="success" sx={{ mt: 2 }}>
+            Thank you for subscribing!
+          </Alert>
+        )}
+        {error && (
+          <Alert severity="error" sx={{ mt: 2 }}>
+            Email already exist
+          </Alert>
+        )}
       </div>
     </div>
   );
